@@ -1,4 +1,9 @@
+package persist;
+
+import model.Product;
+
 import java.sql.*;
+import java.util.ArrayList;
 
 public class DatabaseManager {
 
@@ -40,17 +45,49 @@ public class DatabaseManager {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1,id);
             resultSet = preparedStatement.executeQuery();
+            preparedStatement.close();
             resultSet.next();
             int res = resultSet.getInt(1);
+            resultSet.close();
             if (res == 1) return true;
             else return false;
     }
 
-    public static void main(String[] args) {
-        try {
-            System.out.println(new DatabaseManager().userExists(252101265));
-        } catch (SQLException e) {
-            e.printStackTrace();
+    public  ArrayList<String> getSuppliers() throws SQLException {
+        ArrayList<String> result = new ArrayList<String>();
+        String query = "SELECT Supplier_Name FROM telegramshop.supplier";
+        statement = connection.createStatement();
+        resultSet = statement.executeQuery(query);
+        while (resultSet.next()){
+            result.add(resultSet.getString(1));
         }
+        resultSet.close();
+        statement.close();
+        return result;
+    }
+
+    public ArrayList<Product> getProducts(int supplierId)throws SQLException{
+        ArrayList<Product> result = new ArrayList<>();
+        String query ="SELECT Product_ID,Product_Name,Product_Price,Product_Description,Product_ImageLink FROM telegramshop.product WHERE Supplier_ID = ?";
+        preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1,supplierId);
+        resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            int id = resultSet.getInt(1);
+            String name = resultSet.getString(2);
+            String description = resultSet.getString(3);
+            String link = resultSet.getString(4);
+            result.add(new Product(id,name,description,link));
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+//        try {
+//            ArrayList<Product> d =  new DatabaseManager().getProducts(2);
+//            for(Product p : d) System.out.println(p);
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
     }
 }
