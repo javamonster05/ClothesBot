@@ -1,16 +1,19 @@
 package model;
 
 public class Product {
+
     private int id;
     private String name;
+    private int price;
     private String description;
     private String imageLink;
 
-    public Product(int id, String name, String description, String imageLink){
+    public Product(int id, String name, int price, String description, String imageLink) {
         this.id = id;
         this.name = name;
+        this.price = price;
         this.description = description;
-        this.imageLink  = imageLink;
+        this.imageLink = imageLink;
     }
 
     public int getId() {
@@ -37,6 +40,14 @@ public class Product {
         this.description = description;
     }
 
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
     public String getImageLink() {
         return imageLink;
     }
@@ -50,6 +61,7 @@ public class Product {
         return "Product{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", price=" + price +
                 ", description='" + description + '\'' +
                 ", imageLink='" + imageLink + '\'' +
                 '}';

@@ -66,28 +66,30 @@ public class DatabaseManager {
         return result;
     }
 
-    public ArrayList<Product> getProducts(int supplierId)throws SQLException{
+    public ArrayList<Product> getProducts(int supplierId) throws SQLException{
         ArrayList<Product> result = new ArrayList<>();
         String query ="SELECT Product_ID,Product_Name,Product_Price,Product_Description,Product_ImageLink FROM telegramshop.product WHERE Supplier_ID = ?";
         preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1,supplierId);
         resultSet = preparedStatement.executeQuery();
-        while (resultSet.next()){
+        while (resultSet.next()) {
             int id = resultSet.getInt(1);
             String name = resultSet.getString(2);
-            String description = resultSet.getString(3);
-            String link = resultSet.getString(4);
-            result.add(new Product(id,name,description,link));
+            int price = resultSet.getInt(3);
+            String description = resultSet.getString(4);
+            String link = resultSet.getString(5);
+            result.add(new Product(id, name, price, description, link));
         }
         return result;
     }
 
     public static void main(String[] args) {
-//        try {
-//            ArrayList<Product> d =  new DatabaseManager().getProducts(2);
-//            for(Product p : d) System.out.println(p);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
+        try {
+            ArrayList<Product> d =  new DatabaseManager().getProducts(3);
+            for(Product p : d) System.out.println(p);
+            System.out.println(d.get(d.size()-1).getPrice());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

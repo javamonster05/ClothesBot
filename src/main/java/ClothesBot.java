@@ -1,13 +1,19 @@
+import model.Product;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.objects.PhotoSize;
 import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import persist.DatabaseManager;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class ClothesBot extends TelegramLongPollingBot {
@@ -15,7 +21,14 @@ public class ClothesBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
+
         if (update.hasMessage() && update.getMessage().hasText()) {
+
+
+
+            if(update.hasCallbackQuery()){
+
+            }
 
             if(update.getMessage().getText().equals("/start")){
                 int user_id = update.getMessage().getFrom().getId();
@@ -31,22 +44,37 @@ public class ClothesBot extends TelegramLongPollingBot {
             }
 
             if (update.getMessage().getText().equals("Adidas")){
-
+                try {
+                    sendInlineKeyboadProducts(update.getMessage().getChatId(),db.getProducts(1));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
 
             if (update.getMessage().getText().equals("Nike")){
-
+                try {
+                    sendInlineKeyboadProducts(update.getMessage().getChatId(),db.getProducts(2));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
 
             if (update.getMessage().getText().equals("Puma")){
-
+                try {
+                    sendInlineKeyboadProducts(update.getMessage().getChatId(),db.getProducts(3));
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
             }
+        }
+        if(update.hasMessage() && update.getMessage().hasPhoto()) {
+            sendPhotoId(update.getMessage().getChatId(), update.getMessage().getPhoto());
         }
     }
 
-    private void sendMessage(String msg, long chat_id){
+    private void sendMessage(String msg, long chatId){
         SendMessage message = new SendMessage()
-                .setChatId(chat_id)
+                .setChatId(chatId)
                 .setText(msg);
         try{
             execute(message);
@@ -55,7 +83,7 @@ public class ClothesBot extends TelegramLongPollingBot {
         }
     }
 
-    public void sendKeyboardCategories(long chatId) {
+    private void sendKeyboardCategories(long chatId) {
         try {
             SendMessage message = new SendMessage();
             message.setChatId(chatId);
@@ -80,6 +108,63 @@ public class ClothesBot extends TelegramLongPollingBot {
         }
     }
 
+    private void sendInlineKeyboadProducts(long chatId, ArrayList<Product> products){
+        Product first = products.get(1);
+        SendMessage message = new SendMessage();
+        message.setParseMode("HTML");
+        message.setText("<b>here are all products in this category</b>");
+        message.setChatId(chatId);
+        SendPhoto message1 = new SendPhoto();
+        message1.setChatId(chatId);
+        message1.setParseMode("HTML");
+        String prodInfo = String.format("<i> Name: </i>"+ first.getName() +"\n"
+        + "<i> Description: </i>" + first.getDescription() + "\n"
+        + "<b> Price: </b>" + first.getPrice());
+        message1.setCaption(prodInfo);
+        System.out.println(first.getImageLink());
+        message1.setPhoto("AgADAgADv6kxG3bggUmujxXLgpg_UrXBtw4ABEKjPVPxDzQuriYEAAEC");
+        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> rows = new ArrayList<>();
+        List<InlineKeyboardButton> row = new ArrayList<>();
+        row.add(new InlineKeyboardButton().setText("<--").setCallbackData("update_back"));
+        row.add(new InlineKeyboardButton().setText("-->").setCallbackData("update_forward"));
+        rows.add(row);
+        markup.setKeyboard(rows);
+        message1.setReplyMarkup(markup);
+        try {
+            execute(message);
+            execute(message1);
+        }catch (TelegramApiException e){
+            e.printStackTrace();
+        }
+    }
+
+    private void sendPhotoId(long chatId, List<PhotoSize> photos){
+        String f_id = photos.stream()
+                .sorted(Comparator.comparing(PhotoSize::getFileSize).reversed())
+                .findFirst()
+                .orElse(null).getFileId();
+        // Width photo
+        int f_width = photos.stream()
+                .sorted(Comparator.comparing(PhotoSize::getFileSize).reversed())
+                .findFirst()
+                .orElse(null).getWidth();
+        // Heigth
+        int f_height = photos.stream()
+                .sorted(Comparator.comparing(PhotoSize::getFileSize).reversed())
+                .findFirst()
+                .orElse(null).getHeight();
+        String caption = "file_id: " + f_id + "\nwidth: " + Integer.toString(f_width) + "\nheight: " + Integer.toString(f_height);
+        SendPhoto msg = new SendPhoto()
+                .setChatId(chatId)
+                .setPhoto(f_id)
+                .setCaption(caption);
+        try {
+            execute(msg);
+        } catch (TelegramApiException e) {
+            e.printStackTrace();
+        }
+    }
 
     @Override
     public String getBotUsername() {
