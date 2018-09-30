@@ -68,7 +68,7 @@ public class DatabaseManager {
 
     public ArrayList<Product> getProducts(int supplierId) throws SQLException{
         ArrayList<Product> result = new ArrayList<>();
-        String query ="SELECT Product_ID,Product_Name,Product_Price,Product_Description,Product_ImageLink FROM telegramshop.product WHERE Supplier_ID = ?";
+        String query ="SELECT Product_ID,Product_Name,Product_Price,Product_Description,Product_ImageId FROM telegramshop.product WHERE Supplier_ID = ?";
         preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1,supplierId);
         resultSet = preparedStatement.executeQuery();
@@ -83,13 +83,17 @@ public class DatabaseManager {
         return result;
     }
 
-    public static void main(String[] args) {
-        try {
-            ArrayList<Product> d =  new DatabaseManager().getProducts(3);
-            for(Product p : d) System.out.println(p);
-            System.out.println(d.get(d.size()-1).getPrice());
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
+    public void addToBasket(int productId, int customerId, int quantity) throws SQLException{
+        String query = "INSERT INTO telegramshop.orderproduct (Product_ID, Customer_ID, Quantity) VALUES (?,?,?)";
+        preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1,productId);
+        preparedStatement.setInt(2,customerId);
+        preparedStatement.setInt(3,quantity);
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+    }
+
+    public static void main(String[] args)throws SQLException {
+        new DatabaseManager().addToBasket(2,252101265,3);
     }
 }
