@@ -1,9 +1,11 @@
 package persist;
 
+import model.Basket;
 import model.Product;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Set;
 
 public class DatabaseManager {
 
@@ -66,7 +68,7 @@ public class DatabaseManager {
         return result;
     }
 
-    public ArrayList<Product> getProducts(int supplierId) throws SQLException{
+    public ArrayList<Product> getProductsBySupplierId(int supplierId) throws SQLException{
         ArrayList<Product> result = new ArrayList<>();
         String query ="SELECT Product_ID,Product_Name,Product_Price,Product_Description,Product_ImageId FROM telegramshop.product WHERE Supplier_ID = ?";
         preparedStatement = connection.prepareStatement(query);
@@ -80,20 +82,73 @@ public class DatabaseManager {
             String link = resultSet.getString(5);
             result.add(new Product(id, name, price, description, link));
         }
+        preparedStatement.close();
+        resultSet.close();
         return result;
     }
 
-    public void addToBasket(int productId, int customerId, int quantity) throws SQLException{
+    public void addToBasket(int productId, long customerId, int quantity) throws SQLException{
         String query = "INSERT INTO telegramshop.orderproduct (Product_ID, Customer_ID, Quantity) VALUES (?,?,?)";
         preparedStatement = connection.prepareStatement(query);
         preparedStatement.setInt(1,productId);
-        preparedStatement.setInt(2,customerId);
+        preparedStatement.setLong(2,customerId);
         preparedStatement.setInt(3,quantity);
         preparedStatement.executeUpdate();
         preparedStatement.close();
     }
 
+    public Basket getBasketByUserId(long userId) throws SQLException {
+        Basket basket = new Basket();
+        String query = "SELECT Product_ID , Quantity FROM telegramshop.orderproduct WHERE customer_id = ?";
+        preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setLong(1,userId);
+        resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            basket.getBasket().put(
+                    resultSet.getInt(1),
+                    resultSet.getInt(2));
+        }
+        resultSet.close();
+        preparedStatement.close();
+        return basket;
+    }
+
+    public ArrayList<Product> productsInBasket(Basket basket) throws SQLException {
+        ArrayList<Product> products = new ArrayList<>();
+        Set<Integer> keySet = basket.getBasket().keySet();
+        for(int i : keySet){
+            products.add(getProductById(i));
+        }
+        return products;
+    }
+
+    public Product getProductById(int prodId) throws SQLException{
+            Product product;
+            String query = "SELECT Product_ID,Product_Name,Product_Price,Product_Description,Product_ImageId FROM telegramshop.product WHERE product_id = ?";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setLong(1,prodId);
+            resultSet = preparedStatement.executeQuery();
+            resultSet.next();
+            int id = resultSet.getInt(1);
+            String name = resultSet.getString(2);
+            int price = resultSet.getInt(3);
+            String description = resultSet.getString(4);
+            String link = resultSet.getString(5);
+            product = new Product(id, name, price, description, link);
+            resultSet.close();
+            preparedStatement.close();
+            return product;
+    }
+
     public static void main(String[] args)throws SQLException {
-        new DatabaseManager().addToBasket(2,252101265,3);
+        Basket b = new DatabaseManager().getBasketByUserId(252101265);
+        ArrayList<Product> products = new DatabaseManager().productsInBasket(b);
+        for (Product p : products){
+            System.out.println(p);
+        }
+//        Set<Integer> keySet = b.getBasket().keySet();
+//        for(int i : keySet) System.out.println(i);
+//        Product p = new DatabaseManager().getProductById(1);
+//        System.out.println(p);
     }
 }

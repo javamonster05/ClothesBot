@@ -16,6 +16,8 @@ public class Product {
         this.imageLink = imageLink;
     }
 
+    public Product() {}
+
     public int getId() {
         return id;
     }
