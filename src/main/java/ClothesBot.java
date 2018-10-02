@@ -1,5 +1,7 @@
+import model.Basket;
 import model.Product;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.methods.AnswerCallbackQuery;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
 import org.telegram.telegrambots.meta.api.methods.updatingmessages.EditMessageMedia;
@@ -15,16 +17,16 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import persist.DatabaseManager;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class ClothesBot extends TelegramLongPollingBot {
 
     private Object lock = new Object();
     private DatabaseManager db =  new DatabaseManager();
     private ArrayList<Product> products;
+    Basket basket;
     private static int counterForward = 0;
+    private static int counterBasket = 0;
 
     @Override
     public void onUpdateReceived(Update update) {
@@ -43,7 +45,7 @@ public class ClothesBot extends TelegramLongPollingBot {
                     EditMessageMedia editMessageMedia = new EditMessageMedia();
                     editMessageMedia.setChatId(chatId);
                     editMessageMedia.setMessageId(messageId);
-                    editMessageMedia.setReplyMarkup(sendInlineKeyboard());
+                    editMessageMedia.setReplyMarkup(sendInlineKeyboardCatalogue());
                     InputMediaPhoto inputMediaPhoto = new InputMediaPhoto();
                     inputMediaPhoto.setParseMode("HTML");
                     inputMediaPhoto.setMedia(products.get(counterForward).getImageLink());
@@ -78,7 +80,7 @@ public class ClothesBot extends TelegramLongPollingBot {
                     EditMessageMedia editMessageMedia = new EditMessageMedia();
                     editMessageMedia.setChatId(chatId);
                     editMessageMedia.setMessageId(messageId);
-                    editMessageMedia.setReplyMarkup(sendInlineKeyboard());
+                    editMessageMedia.setReplyMarkup(sendInlineKeyboardCatalogue()); // TODO try to make  method from this code
                     InputMediaPhoto inputMediaPhoto = new InputMediaPhoto();
                     inputMediaPhoto.setParseMode("HTML");
                     inputMediaPhoto.setMedia(products.get(counterForward).getImageLink());
@@ -93,6 +95,78 @@ public class ClothesBot extends TelegramLongPollingBot {
                     e.printStackTrace();
                 }
             }
+            if(callData.equals("update_basket_forward")){
+                try {
+                    if (counterBasket >= products.size() - 1){
+                        counterBasket = -1;
+                    }
+                    counterBasket++;
+                    long chatId = update.getCallbackQuery().getFrom().getId();
+                    Integer messageId = update.getCallbackQuery().getMessage().getMessageId();
+                    EditMessageMedia editMessageMedia = new EditMessageMedia();
+                    editMessageMedia.setChatId(chatId);
+                    editMessageMedia.setMessageId(messageId);
+                    editMessageMedia.setReplyMarkup(sendInlineKeyboardBasket());
+                    InputMediaPhoto inputMediaPhoto = new InputMediaPhoto();
+                    inputMediaPhoto.setParseMode("HTML");
+                    Basket b = basket;
+                    products = db.getProductsInBasket(b);
+                    Map<Integer, Integer> basketMap = b.getBasket();
+                    Set<Integer> keys = basketMap.keySet();
+                    Object[] arrProdId = keys.toArray();
+                    inputMediaPhoto.setMedia(products.get(counterBasket).getImageLink());
+                    String prodInfo = String.format("<i>  Name:  </i>" + products.get(counterBasket).getName() + "\n"
+                            + "<i> Description:  </i>" + products.get(counterBasket).getDescription() + "\n"
+                            + "<b> Price:  </b>" + products.get(counterBasket).getPrice() + "\n"
+                            + "<b> Quantity </b>" + basketMap.get(arrProdId[counterBasket]));
+                    inputMediaPhoto.setCaption(prodInfo);
+                    editMessageMedia.setMedia(inputMediaPhoto);
+                    execute(editMessageMedia);
+                    if(counterBasket >= products.size()-1) counterBasket = -1;
+                }catch (TelegramApiException e){
+                    e.printStackTrace();
+                }
+                catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+            if(callData.equals("update_basket_back")){
+                try {
+                    if(counterBasket == -1){
+                        counterBasket = 2;
+                    }
+                    if (counterBasket == 0){
+                        counterBasket = products.size();
+                    }
+                    counterBasket--;
+                    long chatId = update.getCallbackQuery().getFrom().getId();
+                    Integer messageId = update.getCallbackQuery().getMessage().getMessageId();
+                    EditMessageMedia editMessageMedia = new EditMessageMedia();
+                    editMessageMedia.setChatId(chatId);
+                    editMessageMedia.setMessageId(messageId);
+                    editMessageMedia.setReplyMarkup(sendInlineKeyboardBasket());
+                    InputMediaPhoto inputMediaPhoto = new InputMediaPhoto();
+                    inputMediaPhoto.setParseMode("HTML");
+                    Basket b = basket;
+                    products = db.getProductsInBasket(b);
+                    Map<Integer, Integer> basketMap = b.getBasket();
+                    Set<Integer> keys = basketMap.keySet();
+                    Object[] arrProdId = keys.toArray();
+                    inputMediaPhoto.setMedia(products.get(counterBasket).getImageLink());
+                    String prodInfo = String.format("<i>  Name:  </i>" + products.get(counterBasket).getName() + "\n"
+                            + "<i> Description:  </i>" + products.get(counterBasket).getDescription() + "\n"
+                            + "<b> Price:  </b>" + products.get(counterBasket).getPrice() + "\n"
+                            + "<b> Quantity </b>" + basketMap.get(arrProdId[counterBasket]));
+                    inputMediaPhoto.setCaption(prodInfo);
+                    editMessageMedia.setMedia(inputMediaPhoto);
+                    execute(editMessageMedia);
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }catch (TelegramApiException e){
+                    counterBasket=0;
+                    e.printStackTrace();
+                }
+            }
 
             if(callData.equals("add_to_basket")){
                 long chatId = update.getCallbackQuery().getFrom().getId();
@@ -100,7 +174,25 @@ public class ClothesBot extends TelegramLongPollingBot {
             }
 
             if(callData.equals("back_to_categories")){
-                sendKeyboardCategories(update.getCallbackQuery().getFrom().getId());
+                try {
+                    sendKeyboardCategories(update.getCallbackQuery().getFrom().getId());
+                    AnswerCallbackQuery answer = new AnswerCallbackQuery();
+                    answer.setCallbackQueryId(update.getCallbackQuery().getId());
+                    execute(answer);
+                }catch (TelegramApiException e){
+                    e.printStackTrace();
+                }
+            }
+
+            if(callData.equals("back_to_cabinet")){
+                try {
+                    sendKeyboardCabinet(update.getCallbackQuery().getFrom().getId());
+                    AnswerCallbackQuery answer = new AnswerCallbackQuery();
+                    answer.setCallbackQueryId(update.getCallbackQuery().getId());
+                    execute(answer);
+                }catch (TelegramApiException e){
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -172,7 +264,21 @@ public class ClothesBot extends TelegramLongPollingBot {
                     e.printStackTrace();
                 }
             }
+
+            if(update.getMessage().getText().equals("My basket")){
+                try {
+                    long chatId = update.getMessage().getChatId();
+                    Basket b = new DatabaseManager().getBasketByUserId(chatId);
+                    basket = b;
+                    products = db.getProductsInBasket(b);
+                    sendInlineKeyboardBasket(chatId, b);
+                }
+                catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
         }
+
         if(update.hasMessage() && update.getMessage().hasPhoto()) {
             sendPhotoId(update.getMessage().getChatId(), update.getMessage().getPhoto());
         }
@@ -250,10 +356,51 @@ public class ClothesBot extends TelegramLongPollingBot {
         }catch (TelegramApiException e){
             e.printStackTrace();
         }
-    }
+    } // shadowing, bugs might appear
 
-    private void sendInlineKeyboardBasket(long chatId, ArrayList<Product> products){
-         // TODO make the inline keyboard in order to show full basket for user
+    private void sendInlineKeyboardBasket(long chatId, Basket b){
+        try {
+            ReplyKeyboardRemove remove = new ReplyKeyboardRemove();
+            Map<Integer, Integer> basket = b.getBasket();
+            Set<Integer> keys = basket.keySet();
+            Object[] arr = keys.toArray();
+            Product first = db.getProductById((Integer) arr[0]);
+            SendMessage message = new SendMessage();
+            message.setParseMode("HTML");
+            message.setReplyMarkup(remove);
+            message.setText("<b>Here is your basket</b>");
+            message.setChatId(chatId);
+            SendPhoto message1 = new SendPhoto();
+            message1.setChatId(chatId);
+            message1.setParseMode("HTML");
+            String prodInfo = "<i> Name: </i>" + first.getName() + "\n"
+                    + "<i> Description: </i>" + first.getDescription() + "\n"
+                    + "<b> Price: </b>" + first.getPrice() + "\n"
+                    + "<b> Quantity: </b>" + basket.get(first.getId());
+            message1.setCaption(prodInfo);
+            message1.setPhoto(first.getImageLink());
+            InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+            List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+            List<InlineKeyboardButton> firstRow = new ArrayList<>();
+            firstRow.add(new InlineKeyboardButton().setText("<--").setCallbackData("update_basket_back"));
+            firstRow.add(new InlineKeyboardButton().setText("remove").setCallbackData("remove_from_basket"));
+            firstRow.add(new InlineKeyboardButton().setText("-->").setCallbackData("update_basket_forward"));
+            keyboard.add(firstRow);
+            List<InlineKeyboardButton> secondRow = new ArrayList<>();
+            secondRow.add(new InlineKeyboardButton().setText("Back to cabinet").setCallbackData("back_to_cabinet"));
+            secondRow.add(new InlineKeyboardButton().setText("Change quantity").setCallbackData("change_quantity"));
+            keyboard.add(secondRow);
+            markup.setKeyboard(keyboard);
+            message1.setReplyMarkup(markup);
+            try {
+                execute(message);
+                execute(message1);
+            } catch (TelegramApiException e) {
+                e.printStackTrace();
+            }
+        }catch (SQLException e){
+            e.printStackTrace();
+        }
     }
 
     private void sendPhotoId(long chatId, List<PhotoSize> photos){
@@ -283,18 +430,34 @@ public class ClothesBot extends TelegramLongPollingBot {
         }
     }
 
-    private InlineKeyboardMarkup sendInlineKeyboard(){
+    private InlineKeyboardMarkup sendInlineKeyboardCatalogue(){
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
-        List<List<InlineKeyboardButton>> rows = new ArrayList<>();
-        List<InlineKeyboardButton> row = new ArrayList<>();
-        row.add(new InlineKeyboardButton().setText("<--").setCallbackData("update_back"));
-        row.add(new InlineKeyboardButton().setText("add to basket").setCallbackData("add_to_basket"));
-        row.add(new InlineKeyboardButton().setText("-->").setCallbackData("update_forward"));
-        rows.add(row);
-        List<InlineKeyboardButton> row1 = new ArrayList<>();
-        row1.add(new InlineKeyboardButton().setText("Back to categories").setCallbackData("back_to_categories"));
-        rows.add(row1);
-        markup.setKeyboard(rows);
+        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+        List<InlineKeyboardButton> firstRow = new ArrayList<>();
+        firstRow.add(new InlineKeyboardButton().setText("<--").setCallbackData("update_back"));
+        firstRow.add(new InlineKeyboardButton().setText("add to basket").setCallbackData("add_to_basket"));
+        firstRow.add(new InlineKeyboardButton().setText("-->").setCallbackData("update_forward"));
+        keyboard.add(firstRow);
+        List<InlineKeyboardButton> secondRow = new ArrayList<>();
+        secondRow.add(new InlineKeyboardButton().setText("Back to categories").setCallbackData("back_to_categories"));
+        keyboard.add(secondRow);
+        markup.setKeyboard(keyboard);
+        return markup;
+    }
+
+    private InlineKeyboardMarkup sendInlineKeyboardBasket(){
+        InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+        List<InlineKeyboardButton> firstRow = new ArrayList<>();
+        firstRow.add(new InlineKeyboardButton().setText("<--").setCallbackData("update_basket_back"));
+        firstRow.add(new InlineKeyboardButton().setText("remove").setCallbackData("remove_from_basket"));
+        firstRow.add(new InlineKeyboardButton().setText("-->").setCallbackData("update_basket_forward"));
+        keyboard.add(firstRow);
+        List<InlineKeyboardButton> secondRow = new ArrayList<>();
+        secondRow.add(new InlineKeyboardButton().setText("Back to cabinet").setCallbackData("back_to_cabinet"));
+        secondRow.add(new InlineKeyboardButton().setText("Change quantity").setCallbackData("change_quantity"));
+        keyboard.add(secondRow);
+        markup.setKeyboard(keyboard);
         return markup;
     }
 
@@ -307,7 +470,8 @@ public class ClothesBot extends TelegramLongPollingBot {
         keyboardMarkup.setResizeKeyboard(true);
         List<KeyboardRow> keyboard = new ArrayList<>();
         KeyboardRow row = new KeyboardRow();
-        row.add("Basket");
+        row.add("My basket");
+        row.add("Make order");
         row.add("Order history");
         keyboard.add(row);
         keyboardMarkup.setKeyboard(keyboard);

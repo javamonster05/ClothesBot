@@ -113,7 +113,7 @@ public class DatabaseManager {
         return basket;
     }
 
-    public ArrayList<Product> productsInBasket(Basket basket) throws SQLException {
+    public ArrayList<Product> getProductsInBasket(Basket basket) throws SQLException {
         ArrayList<Product> products = new ArrayList<>();
         Set<Integer> keySet = basket.getBasket().keySet();
         for(int i : keySet){
@@ -142,7 +142,7 @@ public class DatabaseManager {
 
     public static void main(String[] args)throws SQLException {
         Basket b = new DatabaseManager().getBasketByUserId(252101265);
-        ArrayList<Product> products = new DatabaseManager().productsInBasket(b);
+        ArrayList<Product> products = new DatabaseManager().getProductsInBasket(b);
         for (Product p : products){
             System.out.println(p);
         }
