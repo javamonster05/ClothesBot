@@ -140,9 +140,35 @@ public class DatabaseManager {
             return product;
     }
 
+    public void removeFromBasket(long userId, int prodId) throws SQLException{
+        String query = "DELETE FROM telegramshop.orderproduct WHERE product_id = ? AND customer_id = ?;";
+        preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1,prodId);
+        preparedStatement.setLong(2,userId);
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+    }
+
+    public void changeQuantity(long userId, int prodId, int quantity) throws SQLException{
+        String query = "UPDATE telegramshop.orderproduct SET Quantity = ? WHERE Customer_ID = ? AND Product_ID = ?";
+        preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setInt(1,quantity);
+        preparedStatement.setLong(2,userId);
+        preparedStatement.setInt(3,prodId);
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+    }
+
     public static void main(String[] args)throws SQLException {
         Basket b = new DatabaseManager().getBasketByUserId(252101265);
         ArrayList<Product> products = new DatabaseManager().getProductsInBasket(b);
+        products.add(new Product(3,"eeededwd",323223,"ewdwedwe","wedewedwe"));
+        System.out.println(products.size());
+        for (Product p : products){
+            System.out.println(p);
+        }
+        products.remove(2);
+        System.out.println("~~~~~~~~~~~~~~~");
         for (Product p : products){
             System.out.println(p);
         }

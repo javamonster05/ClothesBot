@@ -22,11 +22,14 @@ import java.util.*;
 public class ClothesBot extends TelegramLongPollingBot {
 
     private Object lock = new Object();
-    private DatabaseManager db =  new DatabaseManager();
+    private DatabaseManager databaseManager =  new DatabaseManager();
     private ArrayList<Product> products;
-    Basket basket;
+    private Basket basket;
     private static int counterForward = 0;
     private static int counterBasket = 0;
+    private boolean changeQuantity;
+    private boolean addToBasket;
+
 
     @Override
     public void onUpdateReceived(Update update) {
@@ -66,12 +69,13 @@ public class ClothesBot extends TelegramLongPollingBot {
             }
             if(callData.equals("update_back")){
                 try {
+
                     if(counterForward == -1){
                         counterForward = 2;
                     }
+
                 if (counterForward == 0){
                     counterForward = products.size();
-
                 }
                     counterForward--;
                     System.out.println(counterForward);
@@ -110,23 +114,19 @@ public class ClothesBot extends TelegramLongPollingBot {
                     InputMediaPhoto inputMediaPhoto = new InputMediaPhoto();
                     inputMediaPhoto.setParseMode("HTML");
                     Basket b = basket;
-                    products = db.getProductsInBasket(b);
                     Map<Integer, Integer> basketMap = b.getBasket();
                     Set<Integer> keys = basketMap.keySet();
                     Object[] arrProdId = keys.toArray();
                     inputMediaPhoto.setMedia(products.get(counterBasket).getImageLink());
-                    String prodInfo = String.format("<i>  Name:  </i>" + products.get(counterBasket).getName() + "\n"
+                    String prodInfo = "<i>  Name:  </i>" + products.get(counterBasket).getName() + "\n"
                             + "<i> Description:  </i>" + products.get(counterBasket).getDescription() + "\n"
                             + "<b> Price:  </b>" + products.get(counterBasket).getPrice() + "\n"
-                            + "<b> Quantity </b>" + basketMap.get(arrProdId[counterBasket]));
+                            + "<b> Quantity </b>" + basketMap.get(arrProdId[counterBasket]);
                     inputMediaPhoto.setCaption(prodInfo);
                     editMessageMedia.setMedia(inputMediaPhoto);
                     execute(editMessageMedia);
                     if(counterBasket >= products.size()-1) counterBasket = -1;
                 }catch (TelegramApiException e){
-                    e.printStackTrace();
-                }
-                catch (SQLException e){
                     e.printStackTrace();
                 }
             }
@@ -148,7 +148,6 @@ public class ClothesBot extends TelegramLongPollingBot {
                     InputMediaPhoto inputMediaPhoto = new InputMediaPhoto();
                     inputMediaPhoto.setParseMode("HTML");
                     Basket b = basket;
-                    products = db.getProductsInBasket(b);
                     Map<Integer, Integer> basketMap = b.getBasket();
                     Set<Integer> keys = basketMap.keySet();
                     Object[] arrProdId = keys.toArray();
@@ -160,8 +159,6 @@ public class ClothesBot extends TelegramLongPollingBot {
                     inputMediaPhoto.setCaption(prodInfo);
                     editMessageMedia.setMedia(inputMediaPhoto);
                     execute(editMessageMedia);
-                }catch (SQLException e){
-                    e.printStackTrace();
                 }catch (TelegramApiException e){
                     counterBasket=0;
                     e.printStackTrace();
@@ -171,6 +168,61 @@ public class ClothesBot extends TelegramLongPollingBot {
             if(callData.equals("add_to_basket")){
                 long chatId = update.getCallbackQuery().getFrom().getId();
                 sendMessage("How many do you want? Send number from <b> 1 </b> to <b> 9 </b>",chatId);
+                addToBasket = true;
+            }
+
+            if(callData.equals("remove_from_basket")){
+                try {
+                    if (counterBasket == -1) {
+                        counterBasket = products.size() - 1;
+                    }
+                    System.out.println(products);
+                    int prodId = products.get(counterBasket).getId();
+                    long chatId = update.getCallbackQuery().getFrom().getId();
+                    sendMessage("<b> Removed </b>", chatId);
+                    int messageId = update.getCallbackQuery().getMessage().getMessageId();
+                    EditMessageMedia editMessageMedia = new EditMessageMedia();
+                    editMessageMedia.setChatId(chatId);
+                    editMessageMedia.setMessageId(messageId);
+                    editMessageMedia.setReplyMarkup(sendInlineKeyboardBasket());
+                    InputMediaPhoto inputMediaPhoto = new InputMediaPhoto();
+                    inputMediaPhoto.setParseMode("HTML");
+                    Basket b = basket;
+                    products = databaseManager.getProductsInBasket(b);
+                    Map<Integer, Integer> basketMap = b.getBasket();
+                    Set<Integer> keys = basketMap.keySet();
+                    Object[] arrProdId = keys.toArray();
+                    if(counterBasket == products.size()-1){
+                        counterBasket--;
+                    }
+                    counterBasket++;
+                    inputMediaPhoto.setMedia(products.get(counterBasket).getImageLink());
+                    String prodInfo = String.format("<i>  Name:  </i>" + products.get(counterBasket).getName() + "\n"
+                            + "<i> Description:  </i>" + products.get(counterBasket).getDescription() + "\n"
+                            + "<b> Price:  </b>" + products.get(counterBasket).getPrice() + "\n"
+                            + "<b> Quantity </b>" + basketMap.get(arrProdId[counterBasket]));
+                    inputMediaPhoto.setCaption(prodInfo);
+                    editMessageMedia.setMedia(inputMediaPhoto);
+                    execute(editMessageMedia);
+                    databaseManager.removeFromBasket(chatId, prodId);
+                    products.remove(--counterBasket);
+                    counterBasket++;
+                    System.out.println(products);
+                    if (counterBasket == products.size() - 1) {
+                        counterBasket = 0;
+                    }
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }catch (TelegramApiException e){
+                    e.printStackTrace();
+                }
+            }
+
+
+            if (callData.equals("change_quantity")){
+                long chatId = update.getCallbackQuery().getFrom().getId();
+                sendMessage("Input number from <b> 1 </b> to <b> 9 </b>", chatId);
+                changeQuantity = true;
             }
 
             if(callData.equals("back_to_categories")){
@@ -185,10 +237,10 @@ public class ClothesBot extends TelegramLongPollingBot {
             }
 
             if(callData.equals("back_to_cabinet")){
+                AnswerCallbackQuery answer = new AnswerCallbackQuery();
+                answer.setCallbackQueryId(update.getCallbackQuery().getId());
                 try {
                     sendKeyboardCabinet(update.getCallbackQuery().getFrom().getId());
-                    AnswerCallbackQuery answer = new AnswerCallbackQuery();
-                    answer.setCallbackQueryId(update.getCallbackQuery().getId());
                     execute(answer);
                 }catch (TelegramApiException e){
                     e.printStackTrace();
@@ -203,26 +255,52 @@ public class ClothesBot extends TelegramLongPollingBot {
                 String fname = update.getMessage().getFrom().getFirstName();
                 String lname = update.getMessage().getFrom().getLastName();
                 String uname = update.getMessage().getFrom().getUserName();
-                db.addClientToDatabase(user_id,fname,lname,uname);
+                databaseManager.addClientToDatabase(user_id,fname,lname,uname);
                 sendMessage("This bot appears to be the clothes <i>shop</i>", update.getMessage().getChatId());
             }
 
-            if(update.getMessage().getText().matches(".*[123456789].*")){
-                synchronized (lock) {
+            if (changeQuantity) {
+                if (update.getMessage().getText().matches(".*[123456789].*")) {
                     try {
                         String input = update.getMessage().getText();
+                        long userId = update.getMessage().getFrom().getId();
                         int prodId;
                         if (counterForward == -1) {
                             prodId = products.get(products.size() - 1).getId();
                         } else {
                             prodId = products.get(counterForward).getId();
                         }
-                        int custId = update.getMessage().getFrom().getId();
                         int quantity = Integer.parseInt(input);
-                        db.addToBasket(prodId, custId, quantity);
-                        sendMessage("<i> Added to basket </i>", update.getMessage().getChat().getId());
+                        databaseManager.changeQuantity(userId, prodId, quantity);
+                        basket = databaseManager.getBasketByUserId(userId);
+                        products = databaseManager.getProductsInBasket(basket);
+                        changeQuantity = false;
+                        sendMessage("<i> Quantity changed </i>", update.getMessage().getChat().getId());
                     } catch (SQLException e) {
                         e.printStackTrace();
+                    }
+                }
+            }
+
+            if(addToBasket) {
+                if (update.getMessage().getText().matches(".*[123456789].*")) {
+                    synchronized (lock) {
+                        try {
+                            String input = update.getMessage().getText();
+                            int prodId;
+                            if (counterForward == -1) {
+                                prodId = products.get(products.size() - 1).getId();
+                            } else {
+                                prodId = products.get(counterForward).getId();
+                            }
+                            int custId = update.getMessage().getFrom().getId();
+                            int quantity = Integer.parseInt(input);
+                            databaseManager.addToBasket(prodId, custId, quantity);
+                            sendMessage("<i> Added to basket </i>", update.getMessage().getChat().getId());
+                        } catch (SQLException e) {
+                            e.printStackTrace();
+                        }
+                        addToBasket = false;
                     }
                 }
             }
@@ -238,8 +316,8 @@ public class ClothesBot extends TelegramLongPollingBot {
             if (update.getMessage().getText().equals("Adidas")){
                 try {
                     counterForward = 0;
-                    sendInlineKeyboadProducts(update.getMessage().getChatId(),db.getProductsBySupplierId(1));
-                    products = db.getProductsBySupplierId(1);
+                    sendInlineKeyboadProducts(update.getMessage().getChatId(), databaseManager.getProductsBySupplierId(1));
+                    products = databaseManager.getProductsBySupplierId(1);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -248,8 +326,8 @@ public class ClothesBot extends TelegramLongPollingBot {
             if (update.getMessage().getText().equals("Nike")){
                 try {
                     counterForward =0;
-                    sendInlineKeyboadProducts(update.getMessage().getChatId(),db.getProductsBySupplierId(2));
-                    products = db.getProductsBySupplierId(2);
+                    sendInlineKeyboadProducts(update.getMessage().getChatId(), databaseManager.getProductsBySupplierId(2));
+                    products = databaseManager.getProductsBySupplierId(2);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -258,8 +336,8 @@ public class ClothesBot extends TelegramLongPollingBot {
             if (update.getMessage().getText().equals("Puma")){
                 try {
                     counterForward=0;
-                    sendInlineKeyboadProducts(update.getMessage().getChatId(),db.getProductsBySupplierId(3));
-                    products = db.getProductsBySupplierId(3);
+                    sendInlineKeyboadProducts(update.getMessage().getChatId(), databaseManager.getProductsBySupplierId(3));
+                    products = databaseManager.getProductsBySupplierId(3);
                 } catch (SQLException e) {
                     e.printStackTrace();
                 }
@@ -270,18 +348,23 @@ public class ClothesBot extends TelegramLongPollingBot {
                     long chatId = update.getMessage().getChatId();
                     Basket b = new DatabaseManager().getBasketByUserId(chatId);
                     basket = b;
-                    products = db.getProductsInBasket(b);
+                    products = databaseManager.getProductsInBasket(b);
                     sendInlineKeyboardBasket(chatId, b);
                 }
                 catch (SQLException e){
                     e.printStackTrace();
                 }
             }
+
+            if(update.getMessage().getText().equals("Make order")){
+                //TODO develop orders
+            }
         }
 
         if(update.hasMessage() && update.getMessage().hasPhoto()) {
             sendPhotoId(update.getMessage().getChatId(), update.getMessage().getPhoto());
         }
+
     }
 
     private void sendMessage(String msg, long chatId){
@@ -306,7 +389,7 @@ public class ClothesBot extends TelegramLongPollingBot {
             keyboardMarkup.setResizeKeyboard(true);
             List<KeyboardRow> keyboard = new ArrayList<>();
             KeyboardRow row = new KeyboardRow();
-            ArrayList<String> categories = db.getSuppliers();
+            ArrayList<String> categories = databaseManager.getSuppliers();
             for (String s : categories)
                 row.add(s); // TODO add distribution of rows of products
             keyboard.add(row);
@@ -364,7 +447,8 @@ public class ClothesBot extends TelegramLongPollingBot {
             Map<Integer, Integer> basket = b.getBasket();
             Set<Integer> keys = basket.keySet();
             Object[] arr = keys.toArray();
-            Product first = db.getProductById((Integer) arr[0]);
+            products = databaseManager.getProductsInBasket(databaseManager.getBasketByUserId(chatId));
+            Product first = databaseManager.getProductById((Integer) arr[0]);
             SendMessage message = new SendMessage();
             message.setParseMode("HTML");
             message.setReplyMarkup(remove);
