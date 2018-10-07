@@ -179,7 +179,10 @@ public class ShopBot extends TelegramLongPollingBot {
             }
 
             if(callData.equals("remove_from_basket")){
-                try {
+                try { // TODO fix bug with deletion of last product
+                    if (products.size() == 1){
+                        counterBasket = 0;
+                    }
                     if (counterBasket == -1) {
                         counterBasket = products.size() - 1;
                     }
@@ -212,6 +215,7 @@ public class ShopBot extends TelegramLongPollingBot {
                     editMessageMedia.setMedia(inputMediaPhoto);
                     execute(editMessageMedia);
                     databaseManager.removeFromBasket(chatId, prodId);
+                    if (products.size() == 1) counterBasket++;
                     products.remove(--counterBasket);
                     counterBasket++;
                     System.out.println(products);
@@ -222,6 +226,16 @@ public class ShopBot extends TelegramLongPollingBot {
                     e.printStackTrace();
                 }catch (TelegramApiException e){
                     e.printStackTrace();
+                }catch (IndexOutOfBoundsException e){
+                    counterBasket--;
+                  //  e.printStackTrace();
+                }catch (NullPointerException e){
+                    try {
+                        basket = databaseManager.getBasketByUserId(update.getMessage().getChatId());
+                        products = databaseManager.getProductsInBasket(basket);
+                    } catch (SQLException e1) {
+                        e.printStackTrace();
+                    }
                 }
             }
 
@@ -379,6 +393,10 @@ public class ShopBot extends TelegramLongPollingBot {
 
             if(update.getMessage().getText().equals("Make order")){
                 try {
+                    if(products == null || products.size() == 0){
+                        sendMessage("There are no products in basket",update.getMessage().getChatId());
+                        return;
+                    }
                     int finalPrice = 0;
                     StringBuilder response = new StringBuilder();
                     response.append("<i>Here is your order: </i>\n\n");
@@ -477,6 +495,10 @@ public class ShopBot extends TelegramLongPollingBot {
     }
 
     private void sendInlineKeyboadProducts(long chatId, ArrayList<Product> products){
+        if(products.size() == 0){
+            sendMessage("No products in basket!",chatId);
+            return;
+        }
         ReplyKeyboardRemove remove = new ReplyKeyboardRemove();
         Product first = products.get(counterForward);
         SendMessage message = new SendMessage();
@@ -514,6 +536,10 @@ public class ShopBot extends TelegramLongPollingBot {
 
     private void sendInlineKeyboardBasket(long chatId, Basket b){
         try {
+            if(products.size()==0 || products == null){
+                sendMessage("There are no products in basket",chatId);
+                return;
+            }
             ReplyKeyboardRemove remove = new ReplyKeyboardRemove();
             Map<Integer, Integer> basket = b.getBasket();
             Set<Integer> keys = basket.keySet();

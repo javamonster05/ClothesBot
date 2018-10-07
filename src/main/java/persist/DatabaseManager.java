@@ -12,7 +12,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Set;
-import java.util.Date;
+
 
 public class DatabaseManager {
 
@@ -54,7 +54,7 @@ public class DatabaseManager {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1,id);
             resultSet = preparedStatement.executeQuery();
-            preparedStatement.close();
+            //preparedStatement.close();
             resultSet.next();
             int res = resultSet.getInt(1);
             resultSet.close();
@@ -209,17 +209,18 @@ public class DatabaseManager {
 //        for(int i : keySet) System.out.println(i);
 //        Product p = new DatabaseManager().getProductById(1);
 //        System.out.println(p);
-        Calendar calendar = Calendar.getInstance();
-        java.sql.Date date1 = new java.sql.Date(calendar.getTime().getTime());
-        DateTime dt = new DateTime();
-        String date = "<b>Date: </b>" + dt.dayOfMonth() + + dt.getMonthOfYear()+dt.getYear()+"\n";
-        date += "<b>Time</b>: " + dt.hourOfDay() + dt.minuteOfDay() +dt.secondOfMinute();
-        System.out.println(dt);
-        LocalDate localDate = dt.toLocalDate();
-        LocalDateTime localDateTime = dt.toLocalDateTime();
-        LocalTime localTime = dt.toLocalTime();
-        System.out.println(localDate.toString()+ " " + localTime.toString());
-        System.out.println(localDateTime);
+//        Calendar calendar = Calendar.getInstance();
+//        java.sql.Date date1 = new java.sql.Date(calendar.getTime().getTime());
+//        DateTime dt = new DateTime();
+//        String date = "<b>Date: </b>" + dt.dayOfMonth() + + dt.getMonthOfYear()+dt.getYear()+"\n";
+//        date += "<b>Time</b>: " + dt.hourOfDay() + dt.minuteOfDay() +dt.secondOfMinute();
+//        System.out.println(dt);
+//        LocalDate localDate = dt.toLocalDate();
+//        LocalDateTime localDateTime = dt.toLocalDateTime();
+//        LocalTime localTime = dt.toLocalTime();
+//        System.out.println(localDate.toString()+ " " + localTime.toString());
+//        System.out.println(localDateTime);
         //  new DatabaseManager().makeOrder(2323,date1);
+        new DatabaseManager().removeFromBasket(252101265,7);
     }
 }

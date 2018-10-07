@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6d19999-9cd1-46f8-aeec-e8528856f837" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/../telegramshop/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../telegramshop/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../telegramshop/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../telegramshop/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../telegramshop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../telegramshop/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../telegramshop/src/main/java/ClothesBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../telegramshop/src/main/java/bot/ShopBot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../telegramshop/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../telegramshop/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../telegramshop/src/main/java/persist/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/../telegramshop/src/main/java/persist/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../telegramshop/target/classes/ClothesBot.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../telegramshop/target/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../telegramshop/target/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../telegramshop/target/classes/persist/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/../telegramshop/target/classes/persist/DatabaseManager.class" afterDir="false" />
-    </list>
+    <list default="true" id="b6d19999-9cd1-46f8-aeec-e8528856f837" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -52,22 +42,14 @@
       <file leaf-file-name="ShopBot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/bot/ShopBot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-394">
-              <caret line="293" column="65" selection-start-line="293" selection-start-column="65" selection-end-line="293" selection-end-column="65" />
+            <state relative-caret-position="293">
+              <caret line="233" column="100" selection-start-line="233" selection-start-column="100" selection-end-line="233" selection-end-column="100" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="method#sendMessage#0;class#ClothesBot#0" />
-                <element signature="method#sendKeyboardCategories#0;class#ClothesBot#0" />
-                <element signature="method#sendInlineKeyboadProducts#0;class#ClothesBot#0" />
-                <element signature="method#sendInlineKeyboardBasket#0;class#ClothesBot#0" />
-                <element signature="method#sendPhotoId#0;class#ClothesBot#0" />
-                <element signature="method#sendInlineKeyboardCatalogue#0;class#ClothesBot#0" />
-                <element signature="method#sendInlineKeyboardBasket#1;class#ClothesBot#0" />
-                <element signature="method#sendKeyboardCabinet#0;class#ClothesBot#0" />
-                <element signature="e#31509#31510#0" expanded="true" />
-                <element signature="e#31544#31545#0" expanded="true" />
-                <element signature="e#31593#31594#0" expanded="true" />
-                <element signature="e#31663#31664#0" expanded="true" />
+                <element signature="e#33257#33258#0" expanded="true" />
+                <element signature="e#33292#33293#0" expanded="true" />
+                <element signature="e#33341#33342#0" expanded="true" />
+                <element signature="e#33411#33412#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -76,18 +58,17 @@
       <file leaf-file-name="DatabaseManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/persist/DatabaseManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="730">
-              <caret line="221" column="40" selection-start-line="221" selection-start-column="40" selection-end-line="221" selection-end-column="40" />
+            <state relative-caret-position="129">
+              <caret line="124" selection-start-line="124" selection-end-line="124" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
                 <element signature="method#userExists#0;class#DatabaseManager#0" />
                 <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
+                <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
                 <element signature="method#addToBasket#0;class#DatabaseManager#0" />
                 <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-                <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
                 <element signature="method#getProductById#0;class#DatabaseManager#0" />
-                <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
                 <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
                 <element signature="method#makeOrder#0;class#DatabaseManager#0" />
                 <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
@@ -99,12 +80,8 @@
       <file leaf-file-name="Order.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/model/Order.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="400">
-              <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-              <folding>
-                <element signature="e#374#375#0" expanded="true" />
-                <element signature="e#404#405#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="360">
+              <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -162,11 +139,13 @@
         <option value="$PROJECT_DIR$/src/main/java/ClothesBot.java" />
         <option value="$PROJECT_DIR$/src/main/java/ClothesBot.java" />
         <option value="$PROJECT_DIR$/src/main/java/persist/DatabaseManager.java" />
-        <option value="$PROJECT_DIR$/../telegramshop/src/main/java/ClothesBot.java" />
-        <option value="$PROJECT_DIR$/../telegramshop/src/main/java/bot/ClothesBot.java" />
-        <option value="$PROJECT_DIR$/../telegramshop/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/../telegramshop/pom.xml" />
-        <option value="$PROJECT_DIR$/../telegramshop/src/main/java/model/Order.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ClothesBot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bot/ClothesBot.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/model/Order.java" />
+        <option value="$PROJECT_DIR$/src/main/java/persist/DatabaseManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/bot/ShopBot.java" />
         <option value="$PROJECT_DIR$/../telegramshop/src/main/java/persist/DatabaseManager.java" />
         <option value="$PROJECT_DIR$/../telegramshop/src/main/java/bot/ShopBot.java" />
       </list>
@@ -218,9 +197,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -266,13 +242,16 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../telegramshop" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -383,12 +362,13 @@
       <workItem from="1538640554945" duration="14178000" />
       <workItem from="1538672898749" duration="2957000" />
       <workItem from="1538901284613" duration="1118000" />
-      <workItem from="1538905067673" duration="14146000" />
+      <workItem from="1538905067673" duration="14482000" />
+      <workItem from="1538926586789" duration="6809000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="121339000" />
+    <option name="totallyTimeSpent" value="128484000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -401,7 +381,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49932885" weight="0.32905984" />
@@ -410,15 +389,15 @@
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" weight="0.32905984" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50201344" side_tool="true" weight="0.32905984" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50201344" side_tool="true" visible="true" weight="0.37749287" />
       <window_info anchor="right" id="Maven Projects" order="6" weight="0.3295302" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49798658" weight="0.32905984" />
-      <window_info active="true" anchor="bottom" auto_hide="true" id="Run" order="2" sideWeight="0.4986577" visible="true" weight="0.37749287" />
+      <window_info active="true" anchor="bottom" auto_hide="true" id="Run" order="2" sideWeight="0.49798658" visible="true" weight="0.37749287" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49798658" weight="0.2991453" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49893844" visible="true" weight="0.1590604" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49893844" visible="true" weight="0.16107382" />
       <window_info anchor="right" id="Bean Validation" order="8" weight="0.3295302" />
       <window_info anchor="right" id="Database" order="9" weight="0.3295302" />
       <window_info id="Structure" order="1" sideWeight="0.50106156" side_tool="true" weight="0.27114093" />
@@ -514,13 +493,13 @@
             <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
             <element signature="method#userExists#0;class#DatabaseManager#0" />
             <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="e#2268#2276#0" expanded="true" />
+            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
             <element signature="method#addToBasket#0;class#DatabaseManager#0" />
             <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
             <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
             <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
+            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
+            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
           </folding>
         </state>
       </provider>
@@ -538,18 +517,10 @@
           <caret line="38" column="61" lean-forward="true" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#sendMessage#0;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCategories#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboadProducts#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#0;class#ClothesBot#0" />
-            <element signature="method#sendPhotoId#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardCatalogue#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#1;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCabinet#0;class#ClothesBot#0" />
-            <element signature="e#31509#31510#0" expanded="true" />
-            <element signature="e#31544#31545#0" expanded="true" />
-            <element signature="e#31593#31594#0" expanded="true" />
-            <element signature="e#31663#31664#0" expanded="true" />
+            <element signature="e#33257#33258#0" expanded="true" />
+            <element signature="e#33292#33293#0" expanded="true" />
+            <element signature="e#33341#33342#0" expanded="true" />
+            <element signature="e#33411#33412#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -580,13 +551,13 @@
             <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
             <element signature="method#userExists#0;class#DatabaseManager#0" />
             <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="e#2268#2276#0" expanded="true" />
+            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
             <element signature="method#addToBasket#0;class#DatabaseManager#0" />
             <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
             <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
             <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
+            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
+            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
           </folding>
         </state>
       </provider>
@@ -597,18 +568,10 @@
           <caret line="110" column="84" selection-start-line="110" selection-start-column="84" selection-end-line="110" selection-end-column="84" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#sendMessage#0;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCategories#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboadProducts#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#0;class#ClothesBot#0" />
-            <element signature="method#sendPhotoId#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardCatalogue#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#1;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCabinet#0;class#ClothesBot#0" />
-            <element signature="e#31509#31510#0" expanded="true" />
-            <element signature="e#31544#31545#0" expanded="true" />
-            <element signature="e#31593#31594#0" expanded="true" />
-            <element signature="e#31663#31664#0" expanded="true" />
+            <element signature="e#33257#33258#0" expanded="true" />
+            <element signature="e#33292#33293#0" expanded="true" />
+            <element signature="e#33341#33342#0" expanded="true" />
+            <element signature="e#33411#33412#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -639,13 +602,13 @@
             <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
             <element signature="method#userExists#0;class#DatabaseManager#0" />
             <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="e#2268#2276#0" expanded="true" />
+            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
             <element signature="method#addToBasket#0;class#DatabaseManager#0" />
             <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
             <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
             <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
+            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
+            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
           </folding>
         </state>
       </provider>
@@ -656,18 +619,10 @@
           <caret line="25" column="9" lean-forward="true" selection-start-line="25" selection-start-column="9" selection-end-line="25" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#sendMessage#0;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCategories#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboadProducts#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#0;class#ClothesBot#0" />
-            <element signature="method#sendPhotoId#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardCatalogue#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#1;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCabinet#0;class#ClothesBot#0" />
-            <element signature="e#31509#31510#0" expanded="true" />
-            <element signature="e#31544#31545#0" expanded="true" />
-            <element signature="e#31593#31594#0" expanded="true" />
-            <element signature="e#31663#31664#0" expanded="true" />
+            <element signature="e#33257#33258#0" expanded="true" />
+            <element signature="e#33292#33293#0" expanded="true" />
+            <element signature="e#33341#33342#0" expanded="true" />
+            <element signature="e#33411#33412#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -681,13 +636,13 @@
             <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
             <element signature="method#userExists#0;class#DatabaseManager#0" />
             <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="e#2268#2276#0" expanded="true" />
+            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
             <element signature="method#addToBasket#0;class#DatabaseManager#0" />
             <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
             <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
             <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
+            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
+            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
           </folding>
         </state>
       </provider>
@@ -708,18 +663,10 @@
           <caret line="40" column="13" lean-forward="true" selection-start-line="40" selection-start-column="13" selection-end-line="40" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#sendMessage#0;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCategories#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboadProducts#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#0;class#ClothesBot#0" />
-            <element signature="method#sendPhotoId#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardCatalogue#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#1;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCabinet#0;class#ClothesBot#0" />
-            <element signature="e#31509#31510#0" expanded="true" />
-            <element signature="e#31544#31545#0" expanded="true" />
-            <element signature="e#31593#31594#0" expanded="true" />
-            <element signature="e#31663#31664#0" expanded="true" />
+            <element signature="e#33257#33258#0" expanded="true" />
+            <element signature="e#33292#33293#0" expanded="true" />
+            <element signature="e#33341#33342#0" expanded="true" />
+            <element signature="e#33411#33412#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -733,13 +680,13 @@
             <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
             <element signature="method#userExists#0;class#DatabaseManager#0" />
             <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="e#2268#2276#0" expanded="true" />
+            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
             <element signature="method#addToBasket#0;class#DatabaseManager#0" />
             <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
             <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
             <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
+            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
+            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
           </folding>
         </state>
       </provider>
@@ -760,18 +707,10 @@
           <caret line="18" column="104" lean-forward="true" selection-start-line="18" selection-start-column="104" selection-end-line="18" selection-end-column="104" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#sendMessage#0;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCategories#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboadProducts#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#0;class#ClothesBot#0" />
-            <element signature="method#sendPhotoId#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardCatalogue#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#1;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCabinet#0;class#ClothesBot#0" />
-            <element signature="e#31509#31510#0" expanded="true" />
-            <element signature="e#31544#31545#0" expanded="true" />
-            <element signature="e#31593#31594#0" expanded="true" />
-            <element signature="e#31663#31664#0" expanded="true" />
+            <element signature="e#33257#33258#0" expanded="true" />
+            <element signature="e#33292#33293#0" expanded="true" />
+            <element signature="e#33341#33342#0" expanded="true" />
+            <element signature="e#33411#33412#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -785,13 +724,13 @@
             <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
             <element signature="method#userExists#0;class#DatabaseManager#0" />
             <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="e#2268#2276#0" expanded="true" />
+            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
             <element signature="method#addToBasket#0;class#DatabaseManager#0" />
             <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
             <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
             <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
+            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
+            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
           </folding>
         </state>
       </provider>
@@ -812,18 +751,10 @@
           <caret line="16" column="3" lean-forward="true" selection-start-line="16" selection-start-column="3" selection-end-line="16" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#sendMessage#0;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCategories#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboadProducts#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#0;class#ClothesBot#0" />
-            <element signature="method#sendPhotoId#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardCatalogue#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#1;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCabinet#0;class#ClothesBot#0" />
-            <element signature="e#31509#31510#0" expanded="true" />
-            <element signature="e#31544#31545#0" expanded="true" />
-            <element signature="e#31593#31594#0" expanded="true" />
-            <element signature="e#31663#31664#0" expanded="true" />
+            <element signature="e#33257#33258#0" expanded="true" />
+            <element signature="e#33292#33293#0" expanded="true" />
+            <element signature="e#33341#33342#0" expanded="true" />
+            <element signature="e#33411#33412#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -837,13 +768,13 @@
             <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
             <element signature="method#userExists#0;class#DatabaseManager#0" />
             <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="e#2268#2276#0" expanded="true" />
+            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
             <element signature="method#addToBasket#0;class#DatabaseManager#0" />
             <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
             <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
             <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
+            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
+            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
           </folding>
         </state>
       </provider>
@@ -864,18 +795,10 @@
           <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#sendMessage#0;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCategories#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboadProducts#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#0;class#ClothesBot#0" />
-            <element signature="method#sendPhotoId#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardCatalogue#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#1;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCabinet#0;class#ClothesBot#0" />
-            <element signature="e#31509#31510#0" expanded="true" />
-            <element signature="e#31544#31545#0" expanded="true" />
-            <element signature="e#31593#31594#0" expanded="true" />
-            <element signature="e#31663#31664#0" expanded="true" />
+            <element signature="e#33257#33258#0" expanded="true" />
+            <element signature="e#33292#33293#0" expanded="true" />
+            <element signature="e#33341#33342#0" expanded="true" />
+            <element signature="e#33411#33412#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -889,13 +812,13 @@
             <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
             <element signature="method#userExists#0;class#DatabaseManager#0" />
             <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="e#2268#2276#0" expanded="true" />
+            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
             <element signature="method#addToBasket#0;class#DatabaseManager#0" />
             <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
             <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
             <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
+            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
+            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
           </folding>
         </state>
       </provider>
@@ -916,18 +839,10 @@
           <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#sendMessage#0;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCategories#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboadProducts#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#0;class#ClothesBot#0" />
-            <element signature="method#sendPhotoId#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardCatalogue#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#1;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCabinet#0;class#ClothesBot#0" />
-            <element signature="e#31509#31510#0" expanded="true" />
-            <element signature="e#31544#31545#0" expanded="true" />
-            <element signature="e#31593#31594#0" expanded="true" />
-            <element signature="e#31663#31664#0" expanded="true" />
+            <element signature="e#33257#33258#0" expanded="true" />
+            <element signature="e#33292#33293#0" expanded="true" />
+            <element signature="e#33341#33342#0" expanded="true" />
+            <element signature="e#33411#33412#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -951,13 +866,13 @@
             <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
             <element signature="method#userExists#0;class#DatabaseManager#0" />
             <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="e#2268#2276#0" expanded="true" />
+            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
             <element signature="method#addToBasket#0;class#DatabaseManager#0" />
             <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
             <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
             <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
+            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
+            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
           </folding>
         </state>
       </provider>
@@ -968,18 +883,10 @@
           <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#sendMessage#0;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCategories#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboadProducts#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#0;class#ClothesBot#0" />
-            <element signature="method#sendPhotoId#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardCatalogue#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#1;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCabinet#0;class#ClothesBot#0" />
-            <element signature="e#31509#31510#0" expanded="true" />
-            <element signature="e#31544#31545#0" expanded="true" />
-            <element signature="e#31593#31594#0" expanded="true" />
-            <element signature="e#31663#31664#0" expanded="true" />
+            <element signature="e#33257#33258#0" expanded="true" />
+            <element signature="e#33292#33293#0" expanded="true" />
+            <element signature="e#33341#33342#0" expanded="true" />
+            <element signature="e#33411#33412#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -993,13 +900,13 @@
             <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
             <element signature="method#userExists#0;class#DatabaseManager#0" />
             <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="e#2268#2276#0" expanded="true" />
+            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
             <element signature="method#addToBasket#0;class#DatabaseManager#0" />
             <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
             <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
             <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
+            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
+            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
           </folding>
         </state>
       </provider>
@@ -1044,18 +951,10 @@
           <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#sendMessage#0;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCategories#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboadProducts#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#0;class#ClothesBot#0" />
-            <element signature="method#sendPhotoId#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardCatalogue#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#1;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCabinet#0;class#ClothesBot#0" />
-            <element signature="e#31509#31510#0" expanded="true" />
-            <element signature="e#31544#31545#0" expanded="true" />
-            <element signature="e#31593#31594#0" expanded="true" />
-            <element signature="e#31663#31664#0" expanded="true" />
+            <element signature="e#33257#33258#0" expanded="true" />
+            <element signature="e#33292#33293#0" expanded="true" />
+            <element signature="e#33341#33342#0" expanded="true" />
+            <element signature="e#33411#33412#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1087,18 +986,10 @@
           <caret line="22" column="63" lean-forward="true" selection-start-line="22" selection-start-column="63" selection-end-line="22" selection-end-column="63" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#sendMessage#0;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCategories#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboadProducts#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#0;class#ClothesBot#0" />
-            <element signature="method#sendPhotoId#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardCatalogue#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#1;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCabinet#0;class#ClothesBot#0" />
-            <element signature="e#31509#31510#0" expanded="true" />
-            <element signature="e#31544#31545#0" expanded="true" />
-            <element signature="e#31593#31594#0" expanded="true" />
-            <element signature="e#31663#31664#0" expanded="true" />
+            <element signature="e#33257#33258#0" expanded="true" />
+            <element signature="e#33292#33293#0" expanded="true" />
+            <element signature="e#33341#33342#0" expanded="true" />
+            <element signature="e#33411#33412#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1130,10 +1021,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="24" lean-forward="true" selection-start-line="5" selection-start-column="24" selection-end-line="5" selection-end-column="24" />
-          <folding>
-            <element signature="method#Product#0;class#Product#0" />
-            <element signature="method#toString#0;class#Product#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1141,9 +1028,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1156,12 +1040,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/model/Order.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="20" column="5" lean-forward="true" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-          <folding>
-            <element signature="e#374#375#0" expanded="true" />
-            <element signature="e#404#405#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="360">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
         </state>
       </provider>
     </entry>
@@ -1177,18 +1057,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/persist/DatabaseManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="730">
-          <caret line="221" column="40" selection-start-line="221" selection-start-column="40" selection-end-line="221" selection-end-column="40" />
+        <state relative-caret-position="129">
+          <caret line="124" selection-start-line="124" selection-end-line="124" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
             <element signature="method#userExists#0;class#DatabaseManager#0" />
             <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
+            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
             <element signature="method#addToBasket#0;class#DatabaseManager#0" />
             <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
             <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
             <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
             <element signature="method#makeOrder#0;class#DatabaseManager#0" />
             <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
@@ -1198,22 +1077,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/bot/ShopBot.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-394">
-          <caret line="293" column="65" selection-start-line="293" selection-start-column="65" selection-end-line="293" selection-end-column="65" />
+        <state relative-caret-position="293">
+          <caret line="233" column="100" selection-start-line="233" selection-start-column="100" selection-end-line="233" selection-end-column="100" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#sendMessage#0;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCategories#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboadProducts#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#0;class#ClothesBot#0" />
-            <element signature="method#sendPhotoId#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardCatalogue#0;class#ClothesBot#0" />
-            <element signature="method#sendInlineKeyboardBasket#1;class#ClothesBot#0" />
-            <element signature="method#sendKeyboardCabinet#0;class#ClothesBot#0" />
-            <element signature="e#31509#31510#0" expanded="true" />
-            <element signature="e#31544#31545#0" expanded="true" />
-            <element signature="e#31593#31594#0" expanded="true" />
-            <element signature="e#31663#31664#0" expanded="true" />
+            <element signature="e#33257#33258#0" expanded="true" />
+            <element signature="e#33292#33293#0" expanded="true" />
+            <element signature="e#33341#33342#0" expanded="true" />
+            <element signature="e#33411#33412#0" expanded="true" />
           </folding>
         </state>
       </provider>
