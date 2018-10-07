@@ -1,5 +1,10 @@
+package bot;
+
 import model.Basket;
+import model.Order;
 import model.Product;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.AnswerCallbackQuery;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -17,18 +22,20 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import persist.DatabaseManager;
 
 import java.sql.SQLException;
+import java.sql.Date;
 import java.util.*;
 
-public class ClothesBot extends TelegramLongPollingBot {
+public class ShopBot extends TelegramLongPollingBot {
 
     private Object lock = new Object();
     private DatabaseManager databaseManager =  new DatabaseManager();
     private ArrayList<Product> products;
     private Basket basket;
-    private static int counterForward = 0;
-    private static int counterBasket = 0;
+    private  int counterForward = 0;
+    private  int counterBasket = 0;
     private boolean changeQuantity;
     private boolean addToBasket;
+    private boolean makeOrder;
 
 
     @Override
@@ -52,7 +59,7 @@ public class ClothesBot extends TelegramLongPollingBot {
                     InputMediaPhoto inputMediaPhoto = new InputMediaPhoto();
                     inputMediaPhoto.setParseMode("HTML");
                     inputMediaPhoto.setMedia(products.get(counterForward).getImageLink());
-                    String prodInfo = String.format("<i>  Name:  </i>"+ products.get(counterForward).getName() +"\n"
+                    String prodInfo = String.format("<i> Name:  </i>"+ products.get(counterForward).getName() +"\n"
                             + "<i> Description:  </i>" + products.get(counterForward).getDescription() + "\n"
                             + "<b> Price:  </b>" + products.get(counterForward).getPrice());
                     inputMediaPhoto.setCaption(prodInfo);
@@ -88,7 +95,7 @@ public class ClothesBot extends TelegramLongPollingBot {
                     InputMediaPhoto inputMediaPhoto = new InputMediaPhoto();
                     inputMediaPhoto.setParseMode("HTML");
                     inputMediaPhoto.setMedia(products.get(counterForward).getImageLink());
-                    String prodInfo = "<i>  Name:  </i>"+ products.get(counterForward).getName() +"\n"
+                    String prodInfo = "<i> Name:  </i>"+ products.get(counterForward).getName() +"\n"
                         + "<i> Description:  </i>" + products.get(counterForward).getDescription() + "\n"
                         + "<b> Price:  </b>" + products.get(counterForward).getPrice();
                     inputMediaPhoto.setCaption(prodInfo);
@@ -118,7 +125,7 @@ public class ClothesBot extends TelegramLongPollingBot {
                     Set<Integer> keys = basketMap.keySet();
                     Object[] arrProdId = keys.toArray();
                     inputMediaPhoto.setMedia(products.get(counterBasket).getImageLink());
-                    String prodInfo = "<i>  Name:  </i>" + products.get(counterBasket).getName() + "\n"
+                    String prodInfo = "<i> Name:  </i>" + products.get(counterBasket).getName() + "\n"
                             + "<i> Description:  </i>" + products.get(counterBasket).getDescription() + "\n"
                             + "<b> Price:  </b>" + products.get(counterBasket).getPrice() + "\n"
                             + "<b> Quantity </b>" + basketMap.get(arrProdId[counterBasket]);
@@ -152,7 +159,7 @@ public class ClothesBot extends TelegramLongPollingBot {
                     Set<Integer> keys = basketMap.keySet();
                     Object[] arrProdId = keys.toArray();
                     inputMediaPhoto.setMedia(products.get(counterBasket).getImageLink());
-                    String prodInfo = String.format("<i>  Name:  </i>" + products.get(counterBasket).getName() + "\n"
+                    String prodInfo = String.format("<i> Name:  </i>" + products.get(counterBasket).getName() + "\n"
                             + "<i> Description:  </i>" + products.get(counterBasket).getDescription() + "\n"
                             + "<b> Price:  </b>" + products.get(counterBasket).getPrice() + "\n"
                             + "<b> Quantity </b>" + basketMap.get(arrProdId[counterBasket]));
@@ -197,7 +204,7 @@ public class ClothesBot extends TelegramLongPollingBot {
                     }
                     counterBasket++;
                     inputMediaPhoto.setMedia(products.get(counterBasket).getImageLink());
-                    String prodInfo = String.format("<i>  Name:  </i>" + products.get(counterBasket).getName() + "\n"
+                    String prodInfo = String.format("<i> Name:  </i>" + products.get(counterBasket).getName() + "\n"
                             + "<i> Description:  </i>" + products.get(counterBasket).getDescription() + "\n"
                             + "<b> Price:  </b>" + products.get(counterBasket).getPrice() + "\n"
                             + "<b> Quantity </b>" + basketMap.get(arrProdId[counterBasket]));
@@ -282,6 +289,20 @@ public class ClothesBot extends TelegramLongPollingBot {
                 }
             }
 
+            if(makeOrder){
+                try {
+                    if (update.getMessage().getText().equals("yes")) {
+                        DateTime dt = new DateTime();
+                        String date = dt.toLocalDate().toString() + "\n" + dt.toLocalTime().toString();
+                        databaseManager.makeOrder(update.getMessage().getChatId(), date);
+                        sendMessage("<i>Your order has been made</i>\nYou can view it in the order history",update.getMessage().getChatId());
+                        makeOrder = false;
+                    }
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+
             if(addToBasket) {
                 if (update.getMessage().getText().matches(".*[123456789].*")) {
                     synchronized (lock) {
@@ -357,7 +378,57 @@ public class ClothesBot extends TelegramLongPollingBot {
             }
 
             if(update.getMessage().getText().equals("Make order")){
-                //TODO develop orders
+                try {
+                    int finalPrice = 0;
+                    StringBuilder response = new StringBuilder();
+                    response.append("<i>Here is your order: </i>\n\n");
+                    long chatId = update.getMessage().getChatId();
+                    Basket b = new DatabaseManager().getBasketByUserId(chatId);
+                    basket = b;
+                    products = databaseManager.getProductsInBasket(b);
+                    Map<Integer, Integer> basketMap = b.getBasket();
+                    Set<Integer> keys = basketMap.keySet();
+                    Object[] arrProdId = keys.toArray();
+                    for (int i = 0; i < products.size(); i++) {
+                        response.append("Product № " + (i+1));
+                        response.append("\n");
+                        response.append("<b> Name:  </b>" + products.get(i).getName() + "\n"
+                                + "<b> Description:  </b>" + products.get(i).getDescription() + "\n"
+                                + "<b> Price:  </b>" + products.get(i).getPrice() + "\n"
+                                + "<b> Quantity </b>" + basketMap.get(arrProdId[i])+"\n");
+                        response.append("----------------------");
+                        response.append("\n");
+                    }
+                    for (int i = 0; i <products.size() ; i++) {
+                        finalPrice += products.get(i).getPrice() * basketMap.get(arrProdId[i]);
+                    }
+                    response.append("The final price is: <b>" + finalPrice +"</b>\n\n");
+                    response.append("Note that you are able to manage your basket in your cabinet!\n\n");
+                    response.append("Do you confirm your order? Send \"<b>yes</b>\" if so.");
+                    makeOrder = true;
+                    sendMessage(response.toString(), chatId);
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
+            }
+
+            if (update.getMessage().getText().equals("Order history")){
+                try {
+                    StringBuilder response = new StringBuilder();
+                    response.append("Your order history: \n\n");
+                    ArrayList<Order> orders = databaseManager.getOrderHistory(update.getMessage().getChatId());
+                    for (int i = 0; i < orders.size(); i++) {
+                        response.append("Order № " + (i+1));
+                        response.append("\n\n");
+                        response.append("<b>Order ID: </b>" + orders.get(i).getOrderId() + "\n");
+                        response.append("<b>DateTime: </b>" + orders.get(i).getOrderDate()+"\n\n");
+                        response.append("----------------------");
+                        response.append("\n");
+                    }
+                    sendMessage(response.toString(),update.getMessage().getChatId());
+                }catch (SQLException e){
+                    e.printStackTrace();
+                }
             }
         }
 
@@ -546,6 +617,7 @@ public class ClothesBot extends TelegramLongPollingBot {
     }
 
     private void sendKeyboardCabinet(long chatId){
+        ReplyKeyboardRemove remove = new ReplyKeyboardRemove();
         SendMessage message = new SendMessage();
         message.setChatId(chatId);
         message.setParseMode("HTML");
@@ -560,8 +632,13 @@ public class ClothesBot extends TelegramLongPollingBot {
         keyboard.add(row);
         keyboardMarkup.setKeyboard(keyboard);
         message.setReplyMarkup(keyboardMarkup);
+        SendMessage message1 = new SendMessage();
+        message1.setText("Here is your <i>cabinet</i>");
+        message1.setParseMode("HTML");
+        message1.setReplyMarkup(remove);
         try {
             execute(message);
+//            execute(message1);
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }

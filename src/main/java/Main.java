@@ -1,3 +1,4 @@
+import bot.ShopBot;
 import org.telegram.telegrambots.ApiContextInitializer;
 import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
@@ -9,7 +10,7 @@ public class Main {
         TelegramBotsApi botsApi = new TelegramBotsApi();
 
         try {
-            botsApi.registerBot(new ClothesBot());
+            botsApi.registerBot(new ShopBot());
         } catch (TelegramApiException e) {
             e.printStackTrace();
         }

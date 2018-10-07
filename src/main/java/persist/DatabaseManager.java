@@ -1,11 +1,18 @@
 package persist;
 
 import model.Basket;
+import model.Order;
 import model.Product;
+import org.joda.time.DateTime;
+import org.joda.time.LocalDate;
+import org.joda.time.LocalDateTime;
+import org.joda.time.LocalTime;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Set;
+import java.util.Date;
 
 public class DatabaseManager {
 
@@ -159,22 +166,60 @@ public class DatabaseManager {
         preparedStatement.close();
     }
 
+    public void makeOrder(long userId, String orderDate) throws SQLException {
+        String query = "INSERT INTO telegramshop.order (Customer_ID, OrderDate) VALUES (?,?)";
+        preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setLong(1, userId);
+        preparedStatement.setString(2, orderDate);
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+    }
+
+    public ArrayList<Order> getOrderHistory(long userId) throws SQLException{
+        ArrayList<Order> orders = new ArrayList<>();
+        String query = "SELECT * FROM telegramshop.order WHERE Customer_ID = ?";
+        preparedStatement = connection.prepareStatement(query);
+        preparedStatement.setLong(1, userId);
+        resultSet = preparedStatement.executeQuery();
+        while (resultSet.next()){
+            int orderId = resultSet.getInt(1);
+            long customerId = resultSet.getLong(2);
+            String orderDate =  resultSet.getString(3);
+            orders.add(new Order(orderId,customerId,orderDate));
+        }
+        return orders;
+    }
+
+
     public static void main(String[] args)throws SQLException {
-        Basket b = new DatabaseManager().getBasketByUserId(252101265);
-        ArrayList<Product> products = new DatabaseManager().getProductsInBasket(b);
-        products.add(new Product(3,"eeededwd",323223,"ewdwedwe","wedewedwe"));
-        System.out.println(products.size());
-        for (Product p : products){
-            System.out.println(p);
-        }
-        products.remove(2);
-        System.out.println("~~~~~~~~~~~~~~~");
-        for (Product p : products){
-            System.out.println(p);
-        }
+//        Basket b = new DatabaseManager().getBasketByUserId(252101265);
+//        ArrayList<Product> products = new DatabaseManager().getProductsInBasket(b);
+//        products.add(new Product(3,"eeededwd",323223,"ewdwedwe","wedewedwe"));
+//        System.out.println(products.size());
+//        for (Product p : products){
+
+//            System.out.println(p);
+//        }
+//        products.remove(2);
+//        System.out.println("~~~~~~~~~~~~~~~");
+//        for (Product p : products){
+//            System.out.println(p);
+//        }
 //        Set<Integer> keySet = b.getBasket().keySet();
 //        for(int i : keySet) System.out.println(i);
 //        Product p = new DatabaseManager().getProductById(1);
 //        System.out.println(p);
+        Calendar calendar = Calendar.getInstance();
+        java.sql.Date date1 = new java.sql.Date(calendar.getTime().getTime());
+        DateTime dt = new DateTime();
+        String date = "<b>Date: </b>" + dt.dayOfMonth() + + dt.getMonthOfYear()+dt.getYear()+"\n";
+        date += "<b>Time</b>: " + dt.hourOfDay() + dt.minuteOfDay() +dt.secondOfMinute();
+        System.out.println(dt);
+        LocalDate localDate = dt.toLocalDate();
+        LocalDateTime localDateTime = dt.toLocalDateTime();
+        LocalTime localTime = dt.toLocalTime();
+        System.out.println(localDate.toString()+ " " + localTime.toString());
+        System.out.println(localDateTime);
+        //  new DatabaseManager().makeOrder(2323,date1);
     }
 }
