@@ -22,7 +22,6 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import persist.DatabaseManager;
 
 import java.sql.SQLException;
-import java.sql.Date;
 import java.util.*;
 
 public class ShopBot extends TelegramLongPollingBot {

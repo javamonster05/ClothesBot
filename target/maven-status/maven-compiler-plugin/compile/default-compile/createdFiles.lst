@@ -1,0 +1,6 @@
+bot\ShopBot.class
+Main.class
+model\Basket.class
+persist\DatabaseManager.class
+model\Product.class
+model\Order.class
