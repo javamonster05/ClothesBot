@@ -4,7 +4,6 @@ import model.Basket;
 import model.Order;
 import model.Product;
 import org.joda.time.DateTime;
-import org.joda.time.LocalDate;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
 import org.telegram.telegrambots.meta.api.methods.AnswerCallbackQuery;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
@@ -20,6 +19,8 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKe
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 import persist.DatabaseManager;
+import com.vdurmont.emoji.EmojiParser;
+
 
 import java.sql.SQLException;
 import java.util.*;
@@ -59,8 +60,8 @@ public class ShopBot extends TelegramLongPollingBot {
                     inputMediaPhoto.setParseMode("HTML");
                     inputMediaPhoto.setMedia(products.get(counterForward).getImageLink());
                     String prodInfo = String.format("<i> Name:  </i>"+ products.get(counterForward).getName() +"\n"
-                            + "<i> Description:  </i>" + products.get(counterForward).getDescription() + "\n"
-                            + "<b> Price:  </b>" + products.get(counterForward).getPrice());
+                            + "<i>Description:  </i>" + products.get(counterForward).getDescription() + "\n"
+                            + "<b>Price:  </b>" + products.get(counterForward).getPrice());
                     inputMediaPhoto.setCaption(prodInfo);
                     editMessageMedia.setMedia(inputMediaPhoto);
                     execute(editMessageMedia);
@@ -95,8 +96,8 @@ public class ShopBot extends TelegramLongPollingBot {
                     inputMediaPhoto.setParseMode("HTML");
                     inputMediaPhoto.setMedia(products.get(counterForward).getImageLink());
                     String prodInfo = "<i> Name:  </i>"+ products.get(counterForward).getName() +"\n"
-                        + "<i> Description:  </i>" + products.get(counterForward).getDescription() + "\n"
-                        + "<b> Price:  </b>" + products.get(counterForward).getPrice();
+                        + "<i>Description:  </i>" + products.get(counterForward).getDescription() + "\n"
+                        + "<b>Price:  </b>" + products.get(counterForward).getPrice();
                     inputMediaPhoto.setCaption(prodInfo);
                     editMessageMedia.setMedia(inputMediaPhoto);
                     execute(editMessageMedia);
@@ -179,6 +180,11 @@ public class ShopBot extends TelegramLongPollingBot {
 
             if(callData.equals("remove_from_basket")){
                 try { // TODO fix bug with deletion of last product
+                    long chatId = update.getCallbackQuery().getFrom().getId();
+                    System.out.println(products.size());
+                    if(products.size() == 0){
+                        sendMessage("There are no products in your basket",chatId);
+                    }
                     if (products.size() == 1){
                         counterBasket = 0;
                     }
@@ -187,7 +193,6 @@ public class ShopBot extends TelegramLongPollingBot {
                     }
                     System.out.println(products);
                     int prodId = products.get(counterBasket).getId();
-                    long chatId = update.getCallbackQuery().getFrom().getId();
                     sendMessage("<b> Removed </b>", chatId);
                     int messageId = update.getCallbackQuery().getMessage().getMessageId();
                     EditMessageMedia editMessageMedia = new EditMessageMedia();
@@ -325,7 +330,7 @@ public class ShopBot extends TelegramLongPollingBot {
                             if (counterForward == -1) {
                                 prodId = products.get(products.size() - 1).getId();
                             } else {
-                                prodId = products.get(counterForward).getId();
+                                prodId = products.get(counterForward).getId(); // TODO баг надо отмапить поставщиков на их номер
                             }
                             int custId = update.getMessage().getFrom().getId();
                             int quantity = Integer.parseInt(input);
@@ -390,6 +395,14 @@ public class ShopBot extends TelegramLongPollingBot {
                 }
             }
 
+            if(update.getMessage().getText().equals("Categories")){
+                sendKeyboardCategories(update.getMessage().getChatId());
+            }
+
+            if(update.getMessage().getText().equals("Cabinet")){
+                sendKeyboardCabinet(update.getMessage().getChatId());
+            }
+
             if(update.getMessage().getText().equals("Make order")){
                 try {
                     if(products == null || products.size() == 0){
@@ -429,7 +442,7 @@ public class ShopBot extends TelegramLongPollingBot {
                 }
             }
 
-            if (update.getMessage().getText().equals("Order history")){
+            if (update.getMessage().getText().equals("Order history")){ //TODO добавить общую сумму для ордера, убрать миллисекунды
                 try {
                     StringBuilder response = new StringBuilder();
                     response.append("Your order history: \n\n");
@@ -481,6 +494,9 @@ public class ShopBot extends TelegramLongPollingBot {
             for (String s : categories)
                 row.add(s); // TODO add distribution of rows of products
             keyboard.add(row);
+            KeyboardRow row1 = new KeyboardRow();
+            row1.add("Cabinet");
+            keyboard.add(row1);
             keyboardMarkup.setKeyboard(keyboard);
             message.setReplyMarkup(keyboardMarkup);
             try {
@@ -516,9 +532,9 @@ public class ShopBot extends TelegramLongPollingBot {
         InlineKeyboardMarkup markup = new InlineKeyboardMarkup();
         List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
         List<InlineKeyboardButton> firstRow = new ArrayList<>();
-        firstRow.add(new InlineKeyboardButton().setText("<--").setCallbackData("update_back"));
+        firstRow.add(new InlineKeyboardButton().setText(EmojiParser.parseToUnicode(":arrow_left:")).setCallbackData("update_back"));
         firstRow.add(new InlineKeyboardButton().setText("add to basket").setCallbackData("add_to_basket"));
-        firstRow.add(new InlineKeyboardButton().setText("-->").setCallbackData("update_forward"));
+        firstRow.add(new InlineKeyboardButton().setText(EmojiParser.parseToUnicode(":arrow_right:")).setCallbackData("update_forward"));
         keyboard.add(firstRow);
         List<InlineKeyboardButton> secondRow = new ArrayList<>();
         secondRow.add(new InlineKeyboardButton().setText("Back to categories").setCallbackData("back_to_categories"));
@@ -655,6 +671,9 @@ public class ShopBot extends TelegramLongPollingBot {
         row.add("Make order");
         row.add("Order history");
         keyboard.add(row);
+        KeyboardRow row1 = new KeyboardRow();
+        row1.add("Categories");
+        keyboard.add(row1);
         keyboardMarkup.setKeyboard(keyboard);
         message.setReplyMarkup(keyboardMarkup);
         SendMessage message1 = new SendMessage();

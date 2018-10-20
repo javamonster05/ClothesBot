@@ -17,6 +17,5 @@ public class DBTestMocked {
 
     public static void main(String[] args) {
         Basket b = mock(Basket.class);
-
     }
 }

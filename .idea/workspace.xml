@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b6d19999-9cd1-46f8-aeec-e8528856f837" name="Default" comment="" />
+    <list default="true" id="b6d19999-9cd1-46f8-aeec-e8528856f837" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/../telegramshop/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../telegramshop/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../telegramshop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../telegramshop/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../telegramshop/src/main/java/bot/ShopBot.java" beforeDir="false" afterPath="$PROJECT_DIR$/../telegramshop/src/main/java/bot/ShopBot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../telegramshop/src/test/java/mock/DBTestMocked.java" beforeDir="false" afterPath="$PROJECT_DIR$/../telegramshop/src/test/java/mock/DBTestMocked.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../telegramshop/target/classes/bot/ShopBot.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../telegramshop/target/test-classes/mock/DBTestMocked.class" beforeDir="false" afterPath="$PROJECT_DIR$/../telegramshop/target/test-classes/mock/DBTestMocked.class" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,8 +37,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+            <state relative-caret-position="240">
+              <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,11 +46,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ShopBot.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ShopBot.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/bot/ShopBot.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="29">
-              <caret line="663" column="13" lean-forward="true" selection-start-line="663" selection-start-column="13" selection-end-line="663" selection-end-column="13" />
+            <state relative-caret-position="256">
+              <caret line="444" column="131" selection-start-line="444" selection-start-column="131" selection-end-line="444" selection-end-column="131" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -75,20 +82,8 @@
       <file leaf-file-name="DatabaseTesting.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../telegramshop/src/test/java/unit/DatabaseTesting.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="141">
-              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DBTestMocked.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../telegramshop/src/test/java/mock/DBTestMocked.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+            <state relative-caret-position="174">
+              <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,7 +94,7 @@
       <file leaf-file-name="Basket.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/model/Basket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
+            <state relative-caret-position="220">
               <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
             </state>
           </provider>
@@ -108,8 +103,8 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../telegramshop/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="387">
-              <caret line="67" selection-start-line="67" selection-end-line="67" />
+            <state relative-caret-position="129">
+              <caret line="73" selection-start-line="73" selection-end-line="73" />
             </state>
           </provider>
         </entry>
@@ -138,9 +133,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/DatabaseManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ClothesBot.java" />
         <option value="$PROJECT_DIR$/src/main/java/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/DatabaseManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/ClothesBot.java" />
@@ -186,9 +178,12 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/test/java/DatabaseTesting.java" />
         <option value="$PROJECT_DIR$/src/test/java/unit/DatabaseTesting.java" />
-        <option value="$PROJECT_DIR$/../telegramshop/src/test/java/unit/DatabaseTesting.java" />
-        <option value="$PROJECT_DIR$/../telegramshop/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/unit/DatabaseTesting.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/src/test/java/mock/DBTestMocked.java" />
         <option value="$PROJECT_DIR$/../telegramshop/src/test/java/mock/DBTestMocked.java" />
+        <option value="$PROJECT_DIR$/../telegramshop/pom.xml" />
+        <option value="$PROJECT_DIR$/../telegramshop/src/main/java/bot/ShopBot.java" />
       </list>
     </option>
   </component>
@@ -326,8 +321,8 @@
         </subPane>
       </pane>
       <pane id="AndroidView" />
-      <pane id="Scope" />
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -354,7 +349,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DBTestMocked">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="DBTestMocked" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="10" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -367,6 +362,10 @@
         </pattern>
       </extension>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="telegramshop" />
+    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
@@ -378,23 +377,6 @@
       <option name="MAIN_CLASS_NAME" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
-    </configuration>
-    <configuration name="DatabaseTesting" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="telegramshop" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="unit" />
-      <option name="MAIN_CLASS_NAME" value="unit.DatabaseTesting" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -427,14 +409,13 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="DatabaseTesting.testSuppliers" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="telegramshop" />
+    <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="unit" />
-      <option name="MAIN_CLASS_NAME" value="unit.DatabaseTesting" />
-      <option name="METHOD_NAME" value="testSuppliers" />
-      <option name="TEST_OBJECT" value="method" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -444,13 +425,20 @@
       </option>
       <patterns />
     </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit">
+    <configuration name="unit in telegramshop" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="telegramshop" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="unit.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
+      <option name="PACKAGE_NAME" value="unit" />
       <option name="MAIN_CLASS_NAME" />
       <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="package" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -484,18 +472,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.DBTestMocked" />
-      <item itemvalue="JUnit.DatabaseTesting.testSuppliers" />
-      <item itemvalue="JUnit.DatabaseTesting" />
+      <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.All in telegramshop" />
       <item itemvalue="JUnit.DatabaseTesting.a" />
+      <item itemvalue="JUnit.unit in telegramshop" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.unit in telegramshop" />
         <item itemvalue="Application.DBTestMocked" />
         <item itemvalue="JUnit.DatabaseTesting.a" />
         <item itemvalue="JUnit.All in telegramshop" />
-        <item itemvalue="JUnit.DatabaseTesting" />
-        <item itemvalue="JUnit.DatabaseTesting.testSuppliers" />
       </list>
     </recent_temporary>
   </component>
@@ -533,7 +521,8 @@
       <workItem from="1538926586789" duration="8852000" />
       <workItem from="1538978937733" duration="18000" />
       <workItem from="1539766460413" duration="9467000" />
-      <workItem from="1539795424214" duration="2517000" />
+      <workItem from="1539795424214" duration="3485000" />
+      <workItem from="1540055347484" duration="4121000" />
     </task>
     <servers />
   </component>
@@ -565,9 +554,12 @@
     <history-entry file="DatabaseTesting_a - 2018.10.17 at 18h 24m 36s.xml">
       <configuration name="DatabaseTesting.a" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="unit_in_telegramshop - 2018.10.20 at 20h 09m 59s.xml">
+      <configuration name="unit in telegramshop" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="142529000" />
+    <option name="totallyTimeSpent" value="147618000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -583,35 +575,35 @@
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.49932885" weight="0.32905984" />
+      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5013423" side_tool="true" weight="0.32905984" />
+      <window_info anchor="right" id="Maven Projects" order="7" weight="0.17651007" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info id="Capture Tool" order="2" />
+      <window_info id="Designer" order="2" />
+      <window_info anchor="right" id="Database" order="9" weight="0.3295302" />
+      <window_info id="Structure" order="1" sideWeight="0.50106156" side_tool="true" weight="0.27114093" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49798658" weight="0.3988604" />
+      <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4986577" weight="0.32905984" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32905984" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" weight="0.32905984" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5033557" side_tool="true" weight="0.37749287" />
-      <window_info anchor="right" id="Maven Projects" order="6" weight="0.17651007" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49798658" visible="true" weight="0.32905984" />
-      <window_info anchor="bottom" auto_hide="true" id="Run" order="2" sideWeight="0.4966443" weight="0.37749287" />
+      <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49798658" weight="0.32905984" />
+      <window_info active="true" anchor="bottom" auto_hide="true" id="Run" order="2" sideWeight="0.49597314" visible="true" weight="0.37749287" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49798658" weight="0.47150996" />
-      <window_info id="Capture Tool" order="2" />
-      <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49893844" visible="true" weight="0.1671141" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49893844" visible="true" weight="0.16912752" />
       <window_info anchor="right" id="Bean Validation" order="8" weight="0.3295302" />
-      <window_info anchor="right" id="Database" order="9" weight="0.3295302" />
-      <window_info id="Structure" order="1" sideWeight="0.50106156" side_tool="true" weight="0.27114093" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info id="UI Designer" order="2" />
-      <window_info anchor="right" id="Theme Preview" order="7" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info id="Favorites" order="2" side_tool="true" weight="0.3295302" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3988604" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Find" order="1" />
     </layout>
     <layout-to-restore>
       <window_info id="Designer" order="2" />
@@ -1134,13 +1126,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/Main.java">
+    <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/model/Order.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="360">
+          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../telegramshop/telegramshop.iml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/model/Basket.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
         </state>
       </provider>
     </entry>
@@ -1163,54 +1162,49 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/model/Order.java">
+    <entry file="file://$PROJECT_DIR$/../telegramshop/src/test/java/mock/DBTestMocked.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
-          <caret line="20" column="5" selection-start-line="20" selection-start-column="5" selection-end-line="20" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../telegramshop/telegramshop.iml">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../telegramshop/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="387">
-          <caret line="67" selection-start-line="67" selection-end-line="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/bot/ShopBot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="663" column="13" lean-forward="true" selection-start-line="663" selection-start-column="13" selection-end-line="663" selection-end-column="13" />
+          <caret line="18" column="38" selection-start-line="18" selection-start-column="38" selection-end-line="18" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#265#266#0" expanded="true" />
+            <element signature="e#310#311#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/model/Basket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="12" column="7" selection-start-line="12" selection-start-column="7" selection-end-line="12" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/../telegramshop/src/test/java/unit/DatabaseTesting.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="141">
-          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        <state relative-caret-position="174">
+          <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../telegramshop/src/test/java/mock/DBTestMocked.java">
+    <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="14" column="8" selection-start-line="14" selection-start-column="8" selection-end-line="14" selection-end-column="8" />
+          <caret line="12" column="47" selection-start-line="12" selection-start-column="47" selection-end-line="12" selection-end-column="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../telegramshop/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="129">
+          <caret line="73" selection-start-line="73" selection-end-line="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/bot/ShopBot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="256">
+          <caret line="444" column="131" selection-start-line="444" selection-start-column="131" selection-end-line="444" selection-end-column="131" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
