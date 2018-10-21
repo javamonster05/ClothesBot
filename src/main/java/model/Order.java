@@ -7,6 +7,7 @@ public class Order {
     private int orderId;
     private long customerId;
     private String orderDate;
+    private String orderTime;
 
     public Order(int orderId, long customerId, String orderDate) {
         this.orderId = orderId;
@@ -26,5 +27,13 @@ public class Order {
 
     public String getOrderDate() {
         return orderDate;
+    }
+
+    public String getOrderTime() {
+        return orderTime;
+    }
+
+    public void setOrderTime(String orderTime) {
+        this.orderTime = orderTime;
     }
 }

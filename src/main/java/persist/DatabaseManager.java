@@ -54,12 +54,16 @@ public class DatabaseManager {
             preparedStatement = connection.prepareStatement(query);
             preparedStatement.setInt(1,id);
             resultSet = preparedStatement.executeQuery();
-            //preparedStatement.close();
+//            preparedStatement.close();
             resultSet.next();
             int res = resultSet.getInt(1);
             resultSet.close();
-            if (res == 1) return true;
-            else return false;
+            System.out.println(res);
+            if (res > 0){
+                System.out.println(res);
+                return true;
+            }
+            return false;
     }
 
     public  ArrayList<String> getSuppliers() throws SQLException {
@@ -190,37 +194,8 @@ public class DatabaseManager {
         return orders;
     }
 
+    public static void main(String[] args) throws SQLException {
+        System.out.println(new DatabaseManager().userExists(252101265));
 
-    public static void main(String[] args)throws SQLException {
-//        Basket b = new DatabaseManager().getBasketByUserId(252101265);
-//        ArrayList<Product> products = new DatabaseManager().getProductsInBasket(b);
-//        products.add(new Product(3,"eeededwd",323223,"ewdwedwe","wedewedwe"));
-//        System.out.println(products.size());
-//        for (Product p : products){
-
-//            System.out.println(p);
-//        }
-//        products.remove(2);
-//        System.out.println("~~~~~~~~~~~~~~~");
-//        for (Product p : products){
-//            System.out.println(p);
-//        }
-//        Set<Integer> keySet = b.getBasket().keySet();
-//        for(int i : keySet) System.out.println(i);
-//        Product p = new DatabaseManager().getProductById(1);
-//        System.out.println(p);
-//        Calendar calendar = Calendar.getInstance();
-//        java.sql.Date date1 = new java.sql.Date(calendar.getTime().getTime());
-//        DateTime dt = new DateTime();
-//        String date = "<b>Date: </b>" + dt.dayOfMonth() + + dt.getMonthOfYear()+dt.getYear()+"\n";
-//        date += "<b>Time</b>: " + dt.hourOfDay() + dt.minuteOfDay() +dt.secondOfMinute();
-//        System.out.println(dt);
-//        LocalDate localDate = dt.toLocalDate();
-//        LocalDateTime localDateTime = dt.toLocalDateTime();
-//        LocalTime localTime = dt.toLocalTime();
-//        System.out.println(localDate.toString()+ " " + localTime.toString());
-//        System.out.println(localDateTime);
-        //  new DatabaseManager().makeOrder(2323,date1);
-        new DatabaseManager().removeFromBasket(252101265,7);
     }
 }

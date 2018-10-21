@@ -246,7 +246,7 @@ public class ShopBot extends TelegramLongPollingBot {
 
             if (callData.equals("change_quantity")){
                 long chatId = update.getCallbackQuery().getFrom().getId();
-                sendMessage("Input number from <b> 1 </b> to <b> 9 </b>", chatId);
+                sendMessage("Input number from <b> 1 </b> to <b> 100 </b>", chatId);
                 changeQuantity = true;
             }
 
@@ -293,7 +293,7 @@ public class ShopBot extends TelegramLongPollingBot {
                         if (counterForward == -1) {
                             prodId = products.get(products.size() - 1).getId();
                         } else {
-                            prodId = products.get(counterForward).getId();
+                            prodId = products.get(counterForward).getId(); // TODO баг
                         }
                         int quantity = Integer.parseInt(input);
                         databaseManager.changeQuantity(userId, prodId, quantity);
@@ -311,7 +311,10 @@ public class ShopBot extends TelegramLongPollingBot {
                 try {
                     if (update.getMessage().getText().equals("yes")) {
                         DateTime dt = new DateTime();
-                        String date = dt.toLocalDate().toString() + "\n" + dt.toLocalTime().toString();
+                        String date = dt.toLocalDate().toString() + "\n" + dt.hourOfDay().get() +
+                                ":"+dt.minuteOfHour().get()+":"+dt.secondOfMinute().get();
+                        String hour = dt.hourOfDay().toString();
+                        System.out.println(hour);
                         databaseManager.makeOrder(update.getMessage().getChatId(), date);
                         sendMessage("<i>Your order has been made</i>\nYou can view it in the order history",update.getMessage().getChatId());
                         makeOrder = false;
@@ -444,6 +447,16 @@ public class ShopBot extends TelegramLongPollingBot {
 
             if (update.getMessage().getText().equals("Order history")){ //TODO добавить общую сумму для ордера, убрать миллисекунды
                 try {
+                    int finalPrice =0;
+                    long chatId = update.getMessage().getChatId();
+                    Basket b = new DatabaseManager().getBasketByUserId(chatId);
+                    Map<Integer, Integer> basketMap = b.getBasket();
+                    Set<Integer> keys = basketMap.keySet();
+                    Object[] arrProdId = keys.toArray();
+                    products = databaseManager.getProductsInBasket(b);
+                    for (int i = 0; i <products.size() ; i++) {
+                        finalPrice += products.get(i).getPrice() * basketMap.get(arrProdId[i]);
+                    }
                     StringBuilder response = new StringBuilder();
                     response.append("Your order history: \n\n");
                     ArrayList<Order> orders = databaseManager.getOrderHistory(update.getMessage().getChatId());
@@ -451,7 +464,8 @@ public class ShopBot extends TelegramLongPollingBot {
                         response.append("Order № " + (i+1));
                         response.append("\n\n");
                         response.append("<b>Order ID: </b>" + orders.get(i).getOrderId() + "\n");
-                        response.append("<b>DateTime: </b>" + orders.get(i).getOrderDate()+"\n\n");
+                        response.append("<b>Date Time: </b>" + orders.get(i).getOrderDate()+"\n\n");
+                        response.append("<b>Total sum: </b>" + finalPrice+"\n");
                         response.append("----------------------");
                         response.append("\n");
                     }

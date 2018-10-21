@@ -1,6 +1,9 @@
 bot\ShopBot.class
-Main.class
 model\Basket.class
-persist\DatabaseManager.class
+admin\entity\Supplier.class
+admin\repository\SupplierRepository.class
 model\Product.class
+admin\controller\MainController.class
+persist\DatabaseManager.class
+Application.class
 model\Order.class
