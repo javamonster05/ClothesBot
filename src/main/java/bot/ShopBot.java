@@ -36,7 +36,9 @@ public class ShopBot extends TelegramLongPollingBot {
     private boolean changeQuantity;
     private boolean addToBasket;
     private boolean makeOrder;
+    {
 
+    }
 
     @Override
     public void onUpdateReceived(Update update) {

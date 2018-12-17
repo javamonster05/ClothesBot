@@ -30,8 +30,8 @@
       <file leaf-file-name="Application.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/Application.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
+            <state relative-caret-position="340">
+              <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -39,11 +39,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="true">
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/resources/application.properties">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+              <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
             </state>
           </provider>
         </entry>
@@ -51,8 +51,20 @@
       <file leaf-file-name="Supplier.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/admin/entity/Supplier.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
+            <state relative-caret-position="160">
+              <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ShopBot.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/bot/ShopBot.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
             </state>
           </provider>
         </entry>
@@ -73,7 +85,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/ClothesBot.java" />
         <option value="$PROJECT_DIR$/src/main/java/persist/DatabaseManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/ClothesBot.java" />
         <option value="$PROJECT_DIR$/src/main/java/persist/DatabaseManager.java" />
@@ -115,15 +126,16 @@
         <option value="$PROJECT_DIR$/src/test/java/unit/DatabaseTesting.java" />
         <option value="$PROJECT_DIR$/src/main/java/persist/DatabaseManager.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/../telegramshop/src/main/java/admin/database/Supplier.java" />
-        <option value="$PROJECT_DIR$/../telegramshop/src/main/java/persist/DatabaseManager.java" />
-        <option value="$PROJECT_DIR$/../telegramshop/src/main/resources/application.properties" />
-        <option value="$PROJECT_DIR$/../telegramshop/src/main/java/admin/repository/SupplierRepository.java" />
-        <option value="$PROJECT_DIR$/../telegramshop/src/main/java/Main.java" />
-        <option value="$PROJECT_DIR$/../telegramshop/src/main/java/admin/Application.java" />
-        <option value="$PROJECT_DIR$/../telegramshop/src/main/java/Application.java" />
-        <option value="$PROJECT_DIR$/../telegramshop/src/main/java/admin/controller/MainController.java" />
-        <option value="$PROJECT_DIR$/../telegramshop/pom.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/admin/database/Supplier.java" />
+        <option value="$PROJECT_DIR$/src/main/java/persist/DatabaseManager.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
+        <option value="$PROJECT_DIR$/src/main/java/admin/repository/SupplierRepository.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.java" />
+        <option value="$PROJECT_DIR$/src/main/java/admin/Application.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Application.java" />
+        <option value="$PROJECT_DIR$/src/main/java/admin/controller/MainController.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/../telegramshop/src/main/java/bot/ShopBot.java" />
       </list>
     </option>
   </component>
@@ -173,7 +185,9 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="AndroidView" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -247,6 +261,22 @@
               <item name="telegramshop" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="telegramshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="telegramshop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="persist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="telegramshop" type="b2602c69:ProjectViewProjectNode" />
+              <item name="telegramshop" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -259,15 +289,13 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="ToolWindowRun.ShowToolbar" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SpingCourse/SpringProjects/di-demo" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -474,6 +502,12 @@
       <workItem from="1540055347484" duration="4824000" />
       <workItem from="1540113203052" duration="14169000" />
       <workItem from="1540148666089" duration="11192000" />
+      <workItem from="1542209118764" duration="52000" />
+      <workItem from="1543675007101" duration="8000" />
+      <workItem from="1543675028892" duration="73000" />
+      <workItem from="1545044094251" duration="57000" />
+      <workItem from="1545044162141" duration="14000" />
+      <workItem from="1545044181412" duration="39000" />
     </task>
     <task id="LOCAL-00001" summary="to fix new bugs">
       <created>1540059661021</created>
@@ -518,7 +552,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="173682000" />
+    <option name="totallyTimeSpent" value="173925000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -545,21 +579,22 @@
       <window_info id="UI Designer" order="4" />
       <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.49798658" weight="0.3988604" />
       <window_info anchor="bottom" id="TODO" order="6" sideWeight="0.4986577" weight="0.32905984" />
-      <window_info anchor="bottom" id="Messages" order="12" weight="0.32905984" />
       <window_info anchor="right" id="Palette&#9;" order="4" />
       <window_info id="Image Layers" order="3" />
       <window_info anchor="bottom" id="Java Enterprise" order="7" weight="0.32905984" />
       <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="TCPMON" order="6" />
       <window_info anchor="bottom" id="Version Control" order="10" sideWeight="0.49798658" weight="0.32905984" />
       <window_info anchor="bottom" auto_hide="true" id="Run" order="2" sideWeight="0.49597314" weight="0.37749287" />
-      <window_info anchor="bottom" id="Spring" weight="0.32905984" />
+      <window_info anchor="bottom" id="Spring" order="13" weight="0.32905984" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49798658" weight="0.86752135" />
-      <window_info id="Persistence" sideWeight="0.5014245" side_tool="true" weight="0.17114094" />
+      <window_info id="Persistence" order="7" sideWeight="0.5014245" side_tool="true" weight="0.17114094" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4985755" visible="true" weight="0.17114094" />
       <window_info anchor="right" id="Bean Validation" order="7" weight="0.3295302" />
-      <window_info id="Web" side_tool="true" />
+      <window_info id="Web" order="7" side_tool="true" />
       <window_info anchor="right" id="Theme Preview" order="6" />
       <window_info id="Favorites" order="5" side_tool="true" weight="0.3295302" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32905984" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -653,22 +688,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="initializer##0;class#DatabaseManager#0" />
-            <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
-            <element signature="method#userExists#0;class#DatabaseManager#0" />
-            <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
-            <element signature="method#addToBasket#0;class#DatabaseManager#0" />
-            <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
-            <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
-            <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
-            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
-            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -693,22 +712,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="initializer##0;class#DatabaseManager#0" />
-            <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
-            <element signature="method#userExists#0;class#DatabaseManager#0" />
-            <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
-            <element signature="method#addToBasket#0;class#DatabaseManager#0" />
-            <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
-            <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
-            <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
-            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
-            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -733,22 +736,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="initializer##0;class#DatabaseManager#0" />
-            <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
-            <element signature="method#userExists#0;class#DatabaseManager#0" />
-            <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
-            <element signature="method#addToBasket#0;class#DatabaseManager#0" />
-            <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
-            <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
-            <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
-            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
-            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -783,22 +770,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="28" column="39" selection-start-line="28" selection-start-column="39" selection-end-line="28" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="initializer##0;class#DatabaseManager#0" />
-            <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
-            <element signature="method#userExists#0;class#DatabaseManager#0" />
-            <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
-            <element signature="method#addToBasket#0;class#DatabaseManager#0" />
-            <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
-            <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
-            <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
-            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
-            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -813,22 +784,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="11" column="51" lean-forward="true" selection-start-line="11" selection-start-column="51" selection-end-line="11" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="initializer##0;class#DatabaseManager#0" />
-            <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
-            <element signature="method#userExists#0;class#DatabaseManager#0" />
-            <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
-            <element signature="method#addToBasket#0;class#DatabaseManager#0" />
-            <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
-            <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
-            <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
-            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
-            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -928,12 +883,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="11" column="63" selection-start-line="11" selection-start-column="63" selection-end-line="11" selection-end-column="63" />
-          <folding>
-            <element signature="e#610#611#0" expanded="true" />
-            <element signature="e#642#643#0" expanded="true" />
-            <element signature="e#692#693#0" expanded="true" />
-            <element signature="e#734#735#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -956,9 +905,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="20">
           <caret line="27" column="57" selection-start-line="27" selection-start-column="57" selection-end-line="27" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1012,42 +958,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="129">
           <caret line="100" column="88" selection-start-line="100" selection-start-column="88" selection-end-line="100" selection-end-column="88" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="initializer##0;class#DatabaseManager#0" />
-            <element signature="method#addClientToDatabase#0;class#DatabaseManager#0" />
-            <element signature="method#userExists#0;class#DatabaseManager#0" />
-            <element signature="method#getSuppliers#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsBySupplierId#0;class#DatabaseManager#0" />
-            <element signature="method#addToBasket#0;class#DatabaseManager#0" />
-            <element signature="method#getBasketByUserId#0;class#DatabaseManager#0" />
-            <element signature="method#getProductsInBasket#0;class#DatabaseManager#0" />
-            <element signature="method#getProductById#0;class#DatabaseManager#0" />
-            <element signature="method#removeFromBasket#0;class#DatabaseManager#0" />
-            <element signature="method#changeQuantity#0;class#DatabaseManager#0" />
-            <element signature="method#makeOrder#0;class#DatabaseManager#0" />
-            <element signature="method#getOrderHistory#0;class#DatabaseManager#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/bot/ShopBot.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="621" column="37" selection-start-line="621" selection-start-column="37" selection-end-line="621" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/Application.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="16" column="34" selection-start-line="16" selection-start-column="34" selection-end-line="16" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1055,9 +965,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="15" column="14" selection-start-line="15" selection-start-column="14" selection-end-line="15" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1065,9 +972,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
           <caret line="8" selection-start-line="8" selection-end-line="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1078,17 +982,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/admin/entity/Supplier.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="40" selection-start-line="3" selection-start-column="40" selection-end-line="3" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/resources/application.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="3" column="35" selection-start-line="3" selection-start-column="35" selection-end-line="3" selection-end-column="35" />
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/admin/entity/Supplier.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../telegramshop/src/main/java/bot/ShopBot.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="39" column="8" selection-start-line="39" selection-start-column="8" selection-end-line="39" selection-end-column="8" />
         </state>
       </provider>
     </entry>
